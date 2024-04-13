@@ -7,6 +7,7 @@ export default {
 			colors: {
 				'custom-blue': '#179afc',
 				'custom-blue-dark': '#1C5681',
+				'custom-yellow-chrome': '#ffeb3b',
 			}
 		},
 	},
