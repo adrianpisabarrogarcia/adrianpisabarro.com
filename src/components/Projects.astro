@@ -1,89 +1,89 @@
+---
+const projects = [
+  {
+    title: "Nazareth's Portfolio",
+    description: "Portfolio personal para mostrar diferentes proyectos y trabajos que hace una diseñadora gráfica y animadora 2D/3D.",
+    technologies: ['Astro', 'Tailwind CSS'],
+    links: [
+      {
+        name: 'Ver proyecto',
+        url: 'https://www.uruvielsa.com/',
+      },
+      {
+        name: 'Github',
+        url: 'https://github.com/adrianpisabarrogarcia/uruvielsa'
+      }
+    ]
+  },
+    {
+    title: "Nazareth's Portfolio",
+    description: "Portfolio personal para mostrar diferentes proyectos y trabajos que hace una diseñadora gráfica y animadora 2D/3D.",
+    technologies: ['Astro', 'Tailwind CSS'],
+    links: [
+      {
+        name: 'Ver proyecto',
+        url: 'https://www.uruvielsa.com/',
+      },
+      {
+        name: 'Github',
+        url: 'https://github.com/adrianpisabarrogarcia/uruvielsa'
+      }
+    ]
+  },
+];
+
+---
+
 <section class="sm:mt-20 mt-10">
   <h2 class="flex items-center text-3xl font-semibold">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="40"
-      height="40"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      class="icon icon-tabler icons-tabler-outline icon-tabler-code pr-2"
-      ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
-        d="M7 8l-4 4l4 4"></path><path d="M17 8l4 4l-4 4"></path><path
-        d="M14 4l-4 16"></path></svg
-    >
+    <!-- Icono y título omitidos para simplificar -->
     Proyectos
   </h2>
-  <div class="mt-4">
-    <article class="flex flex-col md:flex-row">
-      <div class="w-full md:w-1/2">
-        <img
-          src="/assets/images/uruvielsa.webp"
-          alt="Proyecto Uruvielsa"
-          class="w-full p-sm rounded-lg shadow-lg dark:shadow-white/30"
-        />
-      </div>
-      <div class="w-full md:w-1/2 ms-4">
-        <h3 class="text-2xl font-semibold">Nazareth's Portfolio</h3>
-        <div class="mt-2 flex">
-          <a
-            class="bg-custom-blue-dark hover:bg-custom-blue border text-white rounded-full flex pt-1 pb-1 ps-2 pe-2 text-sm items-center justify-center"
-            href="https://astro.build/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="icon icon-tabler icons-tabler-outline icon-tabler-brand-astro"
-              ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
-                d="M14.972 3.483c.163 .196 .247 .46 .413 .987l3.64 11.53a15.5 15.5 0 0 0 -4.352 -1.42l-2.37 -7.723a.31 .31 0 0 0 -.296 -.213a.31 .31 0 0 0 -.295 .214l-2.342 7.718a15.5 15.5 0 0 0 -4.37 1.422l3.657 -11.53c.168 -.527 .251 -.79 .415 -.986c.144 -.172 .331 -.306 .544 -.388c.242 -.094 .527 -.094 1.099 -.094h2.612c.572 0 .858 0 1.1 .094c.213 .082 .4 .217 .545 .39"
-              ></path><path d="M9 18c0 1.5 2 3 3 4c1 -1 3 -3 3 -4q -3 1.5 -6 0"
-              ></path></svg
-            >
-            Astro
-          </a>
-          <a
-            class="bg-custom-blue-dark hover:bg-custom-blue border text-white rounded-full flex pt-1 pb-1 ps-2 pe-2 ms-2 text-sm items-center justify-center"
-            href="https://tailwindcss.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="icon icon-tabler icons-tabler-outline icon-tabler-brand-tailwind me-1"
-              ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
-                d="M11.667 6c-2.49 0 -4.044 1.222 -4.667 3.667c.933 -1.223 2.023 -1.68 3.267 -1.375c.71 .174 1.217 .68 1.778 1.24c.916 .912 2 1.968 4.288 1.968c2.49 0 4.044 -1.222 4.667 -3.667c-.933 1.223 -2.023 1.68 -3.267 1.375c-.71 -.174 -1.217 -.68 -1.778 -1.24c-.916 -.912 -1.975 -1.968 -4.288 -1.968zm-4 6.5c-2.49 0 -4.044 1.222 -4.667 3.667c.933 -1.223 2.023 -1.68 3.267 -1.375c.71 .174 1.217 .68 1.778 1.24c.916 .912 1.975 1.968 4.288 1.968c2.49 0 4.044 -1.222 4.667 -3.667c-.933 1.223 -2.023 1.68 -3.267 1.375c-.71 -.174 -1.217 -.68 -1.778 -1.24c-.916 -.912 -1.975 -1.968 -4.288 -1.968z"
-              ></path></svg
-            >
-
-            Tailwind CSS
-          </a>
+  <div>
+    {projects.map((project) => (
+      <article class="flex flex-col md:flex-row mt-4">
+        <div class="w-full md:w-1/2">
+          <img
+            src="/assets/images/uruvielsa.webp"
+            alt={`Proyecto ${project.title}`}
+            class="w-full p-sm rounded-lg shadow-lg dark:shadow-white/30"
+          />
         </div>
-      </div>
-    </article>
+        <div class="w-full md:w-1/2 ms-4">
+          <h3 class="text-2xl font-semibold text-custom-blue-dark dark:text-custom-yellow-chrome">
+            {project.title}
+          </h3>
+          <div class="mt-2 flex">
+            <!-- Bucle para tecnologías, si cada proyecto podría tener diferentes tecnologías -->
+            {project.technologies.map((tech) => (
+              <a
+                class="bg-custom-blue-dark hover:bg-custom-blue border text-white rounded-full flex pt-1 pb-1 ps-2 pe-2 text-sm items-center justify-center ms-2"
+                href={tech === 'Astro' ? 'https://astro.build/' : 'https://tailwindcss.com/'}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {tech}
+              </a>
+            ))}
+          </div>
+          <p class="mt-2">
+            {project.description}
+          </p>
+          <div class="mt-2 flex align-middle items-center text-custom-blue-dark dark:text-custom-blue border-t border-custom-blue-dark dark:border-custom-blue-light pt-2 pb-2 pt-3">
+            <span class="me-4">Links:</span>
+            {project.links.map((link) => (
+              <a
+                class="flex hover:underline ms-4"
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {link.name}
+              </a>
+            ))}
+          </div>
+        </div>
+      </article>
+    ))}
   </div>
-  <a
-    href="/proyectos"
-    class="mt-10 text-custom-blue-dark hover:text-custom-blue font-semibold"
-    >Ver más proyectos</a
-  >
 </section>
