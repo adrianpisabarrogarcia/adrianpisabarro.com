@@ -1,32 +1,69 @@
 ---
+
+import Icon from './Icon.astro';
+
+
 const projects = [
   {
     title: "Nazareth's Portfolio",
+    image: '/assets/images/uruvielsa.webp',
     description: "Portfolio personal para mostrar diferentes proyectos y trabajos que hace una diseñadora gráfica y animadora 2D/3D.",
-    technologies: ['Astro', 'Tailwind CSS'],
+    technologies: [
+      {
+        name: 'Astro',
+        url: 'https://astro.build/',
+        svg: 'brand-astro'
+      },
+      {
+        name: 'Tailwind CSS',
+        url: 'https://tailwindcss.com/',
+        svg: 'brand-tailwind'
+      }
+    ],
     links: [
       {
         name: 'Ver proyecto',
         url: 'https://www.uruvielsa.com/',
+        svg: 'external-link'
       },
       {
         name: 'Github',
-        url: 'https://github.com/adrianpisabarrogarcia/uruvielsa'
+        url: 'https://github.com/adrianpisabarrogarcia/uruvielsa',
+        svg: 'brand-github'
       }
     ]
   },
-    {
-    title: "Nazareth's Portfolio",
-    description: "Portfolio personal para mostrar diferentes proyectos y trabajos que hace una diseñadora gráfica y animadora 2D/3D.",
-    technologies: ['Astro', 'Tailwind CSS'],
+{
+    title: "Laboral Timer",
+    image: '/assets/images/laboral-timer.webp',
+    description: "Aplicación web para llevar el control de horas trabajadas y generar reportes de las mismas.",
+    technologies: [
+      {
+        name: 'Angular',
+        url: 'https://angular.dev/',
+        svg: 'brand-angular'
+      },
+      {
+        name: 'Tailwind CSS',
+        url: 'https://tailwindcss.com/',
+        svg: 'brand-tailwind'
+      },
+      {
+        name: 'PrimeNG',
+        url: 'https://primeng.org/',
+        svg: 'box'
+      }
+    ],
     links: [
       {
         name: 'Ver proyecto',
-        url: 'https://www.uruvielsa.com/',
+        url: 'https://laboraltimer.adrianpisabarro.com/',
+        svg: 'external-link'
       },
       {
         name: 'Github',
-        url: 'https://github.com/adrianpisabarrogarcia/uruvielsa'
+        url: 'https://github.com/adrianpisabarrogarcia/laboral-timer',
+        svg: 'brand-github'
       }
     ]
   },
@@ -42,14 +79,14 @@ const projects = [
   <div>
     {projects.map((project) => (
       <article class="flex flex-col md:flex-row mt-4">
-        <div class="w-full md:w-1/2">
+        <div class="w-full shadow-lg dark:shadow-white/30 md:w-1/2 relative overflow-hidden rounded-lg">
           <img
-            src="/assets/images/uruvielsa.webp"
+            src={project.image}
             alt={`Proyecto ${project.title}`}
-            class="w-full p-sm rounded-lg shadow-lg dark:shadow-white/30"
+            class="w-full transition duration-700 ease-in-out hover:scale-150"
           />
         </div>
-        <div class="w-full md:w-1/2 ms-4">
+        <div class="w-auto md:w-1/2 m-4">
           <h3 class="text-2xl font-semibold text-custom-blue-dark dark:text-custom-yellow-chrome">
             {project.title}
           </h3>
@@ -57,12 +94,14 @@ const projects = [
             <!-- Bucle para tecnologías, si cada proyecto podría tener diferentes tecnologías -->
             {project.technologies.map((tech) => (
               <a
-                class="bg-custom-blue-dark hover:bg-custom-blue border text-white rounded-full flex pt-1 pb-1 ps-2 pe-2 text-sm items-center justify-center ms-2"
-                href={tech === 'Astro' ? 'https://astro.build/' : 'https://tailwindcss.com/'}
+                class="bg-custom-blue-dark hover:bg-custom-blue border text-white rounded-full flex pt-1 pb-1 ps-2 pe-2 text-sm items-center justify-center me-2"
+                href={tech.url}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {tech}
+
+                <span class="me-1"><Icon icon={tech.svg} /></span>
+                {tech.name}
               </a>
             ))}
           </div>
@@ -70,14 +109,14 @@ const projects = [
             {project.description}
           </p>
           <div class="mt-2 flex align-middle items-center text-custom-blue-dark dark:text-custom-blue border-t border-custom-blue-dark dark:border-custom-blue-light pt-2 pb-2 pt-3">
-            <span class="me-4">Links:</span>
             {project.links.map((link) => (
               <a
-                class="flex hover:underline ms-4"
+                class="flex hover:underline me-4"
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
               >
+                <span class="me-1"><Icon icon={link.svg} /></span>
                 {link.name}
               </a>
             ))}
