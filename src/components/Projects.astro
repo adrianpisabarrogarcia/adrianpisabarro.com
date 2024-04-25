@@ -8,6 +8,9 @@ import BoxIcon from "./icons/box.astro";
 import PhpIcon from "./icons/php.astro";
 import ChartIcon from "./icons/chart.astro";
 import MySQLIcon from "./icons/mysql.astro";
+import KotlinIcon from "./icons/kotlin.astro";
+import FirebaseIcon from "./icons/firebase.astro";
+import DocIcon from "./icons/doc.astro";
 const projects = [
   {
     title: "Nazareth's Portfolio",
@@ -33,7 +36,7 @@ const projects = [
         svg: "external-link",
       },
       {
-        name: "Github",
+        name: "GitHub",
         url: "https://github.com/adrianpisabarrogarcia/uruvielsa",
         svg: "github",
       },
@@ -68,7 +71,7 @@ const projects = [
         svg: "external-link",
       },
       {
-        name: "Github",
+        name: "GitHub",
         url: "https://github.com/adrianpisabarrogarcia/laboral-timer",
         svg: "github",
       },
@@ -103,17 +106,93 @@ const projects = [
         svg: "external-link",
       },
       {
-        name: "Github",
+        name: "GitHub",
         url: "https://github.com/adrianpisabarrogarcia/diagnostico-de-pastoral-con-jovenes",
         svg: "github",
       },
     ],
   },
+  {
+    title: "SuperBag",
+    image: "/assets/images/superbag.webp",
+    description: "Aplicación móvil para gestionar la compra de una familia.",
+    technologies: [
+      {
+        name: "Kotlin",
+        url: "https://kotlinlang.org/",
+        svg: "kotlin",
+      },
+      {
+        name: "Firebase",
+        url: "https://firebase.google.com/",
+        svg: "firebase",
+      },
+    ],
+    links: [
+      {
+        name: "Documentación",
+        url: "https://github.com/adrianpisabarrogarcia/SuperBag/blob/main/SuperBag%20Manual%20y%20Documentaci%C3%B3n.pdf",
+        svg: "doc",
+      },
+      {
+        name: "GitHub",
+        url: "https://github.com/adrianpisabarrogarcia/SuperBag",
+        svg: "github",
+      },
+    ],
+  },
+  /*{
+    title: "EgiConnect",
+    image: "/assets/images/superbag.webp",
+    description: "Aplicación móvil para gestionar la compra de una familia.",
+    technologies: [
+      {
+        name: "Kotlin",
+        url: "https://kotlinlang.org/",
+        svg: "kotlin",
+      },
+      {
+        name: "Firebase",
+        url: "https://firebase.google.com/",
+        svg: "firebase",
+      },
+    ],
+    links: [
+      {
+        name: "Documentación",
+        url: "https://github.com/adrianpisabarrogarcia/SuperBag/blob/main/SuperBag%20Manual%20y%20Documentaci%C3%B3n.pdf",
+        svg: "doc",
+      },
+      {
+        name: "GitHub",
+        url: "https://github.com/adrianpisabarrogarcia/SuperBag",
+        svg: "github",
+      },
+    ],
+  },*/
 ];
 ---
 
 <section class="sm:mt-20 mt-10">
-  <h2 class="flex items-center text-3xl font-semibold">Proyectos</h2>
+  <h2 class="flex items-center text-3xl font-semibold">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="40"
+      height="40"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="icon icon-tabler icons-tabler-outline icon-tabler-flask pr-1"
+      ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+        d="M9 3l6 0"></path><path d="M10 9l4 0"></path><path
+        d="M10 3v6l-4 11a.7 .7 0 0 0 .5 1h11a.7 .7 0 0 0 .5 -1l-4 -11v-6"
+      ></path></svg
+    >
+    Proyectos
+  </h2>
   <div>
     {
       projects.map((project) => (
@@ -145,6 +224,8 @@ const projects = [
                     {tech.svg === "php" && <PhpIcon />}
                     {tech.svg === "chart" && <ChartIcon />}
                     {tech.svg === "mysql" && <MySQLIcon />}
+                    {tech.svg === "kotlin" && <KotlinIcon />}
+                    {tech.svg === "firebase" && <FirebaseIcon />}
                   </span>
                   {tech.name}
                 </a>
@@ -162,6 +243,7 @@ const projects = [
                   <span class="me-1">
                     {link.svg === "external-link" && <ExternalLinkIcon />}
                     {link.svg === "github" && <GithubIcon />}
+                    {link.svg === "doc" && <DocIcon />}
                   </span>
                   {link.name}
                 </a>
@@ -180,7 +262,7 @@ const projects = [
       rel="noopener noreferrer"
       target="_blank"
     >
-      Más proyectos en Github
+      Más proyectos en GitHub
     </a>
   </div>
 </section>
