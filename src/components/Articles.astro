@@ -1,0 +1,71 @@
+---
+// Importación de funciones necesarias de Astro
+import { getCollection } from "astro:content";
+
+// Obtención de todas las entradas de la colección de blog
+const allBlogPosts = await getCollection("blog");
+allBlogPosts.sort(
+  (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+);
+
+// Función auxiliar para formatear las fechas
+function formatDate(date: string) {
+  console.log(date);
+  return new Intl.DateTimeFormat("es-ES", {
+    year: "numeric",
+    month: "long",
+    day: "2-digit",
+  }).format(new Date(date));
+}
+
+// Formatear las fechas de cada post
+allBlogPosts.forEach((post: any) => {
+  post.formattedDate = formatDate(post.data.date);
+});
+---
+
+<section class="sm:mt-20 mt-10">
+  <h2 class="flex items-center text-3xl font-semibold">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="40"
+      height="40"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="icon icon-tabler icons-tabler-outline icon-tabler-pencil pr-1"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4"></path>
+      <path d="M13.5 6.5l4 4"></path>
+    </svg>
+    Últimos artículos
+  </h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <!-- Iteración sobre cada post del blog -->
+    {
+      allBlogPosts.map((post: any) => (
+        <div class="border p-4 rounded-lg">
+          <h3 class="text-2xl font-bold">{post.data.title}</h3>
+          <p class="text-gray-600">{post.formattedDate}</p>
+          <p class="text-gray-600">{post.data.category}</p>
+          <img
+            src={post.data.image.src}
+            alt={post.data.image.alt}
+            class="w-full h-auto mt-2"
+          />
+          <p class="text-gray-500 mt-2">{post.description}</p>
+          <a
+            href={`/blog/${post.slug}`}
+            class="text-blue-500 hover:text-blue-700"
+          >
+            Leer más
+          </a>
+        </div>
+      ))
+    }
+  </div>
+</section>
