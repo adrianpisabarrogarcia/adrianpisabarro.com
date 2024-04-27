@@ -1,0 +1,32 @@
+<!-- Suponiendo que añades este script en tu archivo .astro o en un layout que lo incluya -->
+<div class="right-10 top-10 fixed">
+  <button id="theme-toggle-selector" class="p-1 text-2xl"> 🌞/🌜 </button>
+</div>
+<script>
+  const themeToggleSelector = document.getElementById("theme-toggle-selector");
+  if (themeToggleSelector) {
+    themeToggleSelector.addEventListener("click", () => {
+      const currentTheme = localStorage.getItem("theme");
+      const newTheme = currentTheme === "light" ? "dark" : "light";
+      setTheme(newTheme);
+    });
+  }
+
+  const localStorageTheme = localStorage.getItem("theme");
+  if (localStorageTheme) {
+    setTheme(localStorageTheme);
+  } else {
+    //View system default theme
+    const currentTheme =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+    setTheme(currentTheme);
+  }
+
+  function setTheme(newTheme: string) {
+    document.documentElement.classList.toggle("dark", newTheme === "dark");
+    localStorage.setItem("theme", newTheme);
+  }
+</script>
