@@ -1,0 +1,44 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getEntry, getEntries } from "astro:content";
+
+const { slug } = Astro.params;
+const post = await getEntry("blog", slug as string);
+console.log(post);
+
+function formatDate(date: Date) {
+  return new Intl.DateTimeFormat("es-ES", {
+    year: "numeric",
+    month: "long",
+    day: "2-digit",
+  }).format(date);
+}
+---
+
+<Layout title={post ? post.data.title : "Post not found"}>
+  <div style="margin-top: 40px;">
+    <a
+      href="/"
+      class="bg-custom-blue-dark hover:bg-custom-blue border text-white ps-3 pe-3 pt-2 pb-2 rounded-full"
+      >← Ir atrás</a
+    >
+  </div>
+  <article class="prose lg:prose-xl w-100 mt-5 p-5 shadow-lg rounded-lg">
+    {
+      post ? (
+        <>
+          <h1 class="text-3xl font-bold">{post.data.title}</h1>
+          <p class="text-gray-500">{formatDate(new Date(post.data.date))}</p>
+          <img
+            src={post.data.image.src}
+            alt={post.data.image.alt}
+            class="rounded"
+          />
+          <div>{post.body}</div>
+        </>
+      ) : (
+        <p>Post not found.</p>
+      )
+    }
+  </article>
+</Layout>
