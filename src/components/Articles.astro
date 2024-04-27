@@ -1,5 +1,4 @@
 ---
-
 import { getCollection } from "astro:content";
 
 const allBlogPosts = await getCollection("blog");
@@ -40,27 +39,27 @@ function formatDate(date: string) {
     </svg>
     Últimos artículos
   </h2>
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-    {
-      allBlogPosts.map((post: any) => (
-        <div class="border p-4 rounded-lg">
-          <h3 class="text-2xl font-bold">{post.data.title}</h3>
-          <p class="text-gray-600">{post.formattedDate}</p>
-          <p class="text-gray-600">{post.data.category}</p>
+  {
+    allBlogPosts.map((post: any) => (
+      <a
+        class="p-2 rounded-lg dark:hover:bg-slate-500 hover:bg-slate-200 dark:bg-slate-800 bg-slate-100 dark:bg-slate-600 flex items-center mt-4 shadow-md transition-all duration-300 ease-in-out"
+        href={`/blog/${post.slug}`}
+        aria-label={post.data.title}
+      >
+        <div class="w-1/10">
           <img
             src={post.data.image.src}
             alt={post.data.image.alt}
-            class="w-full h-auto mt-2"
+            class="w-16 h-16 object-cover rounded-lg"
           />
-          <p class="text-gray-500 mt-2">{post.description}</p>
-          <a
-            href={`/blog/${post.slug}`}
-            class="text-blue-500 hover:text-blue-700"
-          >
-            Leer más
-          </a>
         </div>
-      ))
-    }
-  </div>
+        <div class="w-9/10 ms-3">
+          <h3 class="text-xl font-medium">{post.data.title}</h3>
+          <p class="text-gray-600 dark:text-gray-300 text-sm">
+            {post.formattedDate} - {post.data.category}
+          </p>
+        </div>
+      </a>
+    ))
+  }
 </section>
