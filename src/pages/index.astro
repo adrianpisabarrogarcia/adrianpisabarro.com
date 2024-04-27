@@ -2,17 +2,14 @@
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Expertise from "../components/Expertise.astro";
-import Footer from "../components/Footer.astro";
 import Projects from "../components/Projects.astro";
 import AboutMe from "../components/AboutMe.astro";
-import ThemeToggle from "../components/ThemeToggle.astro";
 import TechSkills from "../components/TechSkills.astro";
 import Articles from "../components/Articles.astro";
 ---
 
 <Layout title="Porfolio de Adrián Pisabarro - Desarrollador y Programador Web">
-  <main w-full max-w-4xl mx-auto px-4 py-6>
-    <ThemeToggle />
+  <main class="w-full max-w-4xl mx-auto px-4 py-6">
     <Header />
     <Articles />
     <Expertise />
@@ -20,5 +17,4 @@ import Articles from "../components/Articles.astro";
     <Projects />
     <AboutMe />
   </main>
-  <Footer />
 </Layout>
