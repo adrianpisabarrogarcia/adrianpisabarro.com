@@ -1,27 +1,23 @@
 ---
-// Importación de funciones necesarias de Astro
+
 import { getCollection } from "astro:content";
 
-// Obtención de todas las entradas de la colección de blog
 const allBlogPosts = await getCollection("blog");
 allBlogPosts.sort(
-  (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  // Ordenar las entradas por fecha de publicación de forma descendente
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
 );
+allBlogPosts.forEach((post: any) => {
+  post.formattedDate = formatDate(post.data.date);
+});
 
-// Función auxiliar para formatear las fechas
 function formatDate(date: string) {
-  console.log(date);
   return new Intl.DateTimeFormat("es-ES", {
     year: "numeric",
     month: "long",
     day: "2-digit",
   }).format(new Date(date));
 }
-
-// Formatear las fechas de cada post
-allBlogPosts.forEach((post: any) => {
-  post.formattedDate = formatDate(post.data.date);
-});
 ---
 
 <section class="sm:mt-20 mt-10">
@@ -45,7 +41,6 @@ allBlogPosts.forEach((post: any) => {
     Últimos artículos
   </h2>
   <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-    <!-- Iteración sobre cada post del blog -->
     {
       allBlogPosts.map((post: any) => (
         <div class="border p-4 rounded-lg">
