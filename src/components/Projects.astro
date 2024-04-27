@@ -11,6 +11,9 @@ import MySQLIcon from "./icons/mysql.astro";
 import KotlinIcon from "./icons/kotlin.astro";
 import FirebaseIcon from "./icons/firebase.astro";
 import DocIcon from "./icons/doc.astro";
+import LaravelIcon from "./icons/laravel.astro";
+import JQueryIcon from "./icons/jquery.astro";
+import BootstrapIcon from "./icons/bootstrap.astro";
 const projects = [
   {
     title: "Nazareth's Portfolio",
@@ -141,35 +144,41 @@ const projects = [
       }
     ]
   },
-  /*{
+  {
     title: "EgiConnect",
-    image: "/assets/images/superbag.webp",
-    description: "Aplicación móvil para gestionar la compra de una familia.",
+    image: "/assets/images/egiconnect.webp",
+    description:
+      "Aplicación web para gestionar la comunicación entre equipos, es algo parecido a Microsoft Teams o Slack pero más sencillo. Contiene un chat, tareas, archivos, gestión de proyectos, etc.",
     technologies: [
       {
-        name: "Kotlin",
-        url: "https://kotlinlang.org/",
-        svg: "kotlin",
+        name: "Laravel",
+        url: "https://laravel.com/",
+        svg: "laravel",
       },
       {
-        name: "Firebase",
-        url: "https://firebase.google.com/",
-        svg: "firebase",
+        name: "JQuery",
+        url: "https://jquery.com/",
+        svg: "jquery",
+      },
+      {
+        name: "Bootstrap",
+        url: "https://getbootstrap.com/",
+        svg: "bootstrap",
+      },
+      {
+        name: "MySQL",
+        url: "https://www.mysql.com/",
+        svg: "mysql",
       },
     ],
     links: [
       {
-        name: "Documentación",
-        url: "https://github.com/adrianpisabarrogarcia/SuperBag/blob/main/SuperBag%20Manual%20y%20Documentaci%C3%B3n.pdf",
-        svg: "doc",
-      },
-      {
         name: "GitHub",
-        url: "https://github.com/adrianpisabarrogarcia/SuperBag",
+        url: "https://github.com/adrianpisabarrogarcia/egiconnect",
         svg: "github",
       },
     ],
-  },*/
+  },
 ];
 ---
 
@@ -226,6 +235,9 @@ const projects = [
                     {tech.svg === "mysql" && <MySQLIcon />}
                     {tech.svg === "kotlin" && <KotlinIcon />}
                     {tech.svg === "firebase" && <FirebaseIcon />}
+                    {tech.svg === "laravel" && <LaravelIcon />}
+                    {tech.svg === "jquery" && <JQueryIcon />}
+                    {tech.svg === "bootstrap" && <BootstrapIcon />}
                   </span>
                   {tech.name}
                 </a>
