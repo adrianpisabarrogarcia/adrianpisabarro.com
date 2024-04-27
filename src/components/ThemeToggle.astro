@@ -1,32 +1,54 @@
-<!-- Suponiendo que añades este script en tu archivo .astro o en un layout que lo incluya -->
-<div class="right-10 top-10 fixed">
-  <button id="theme-toggle-selector" class="p-1 text-2xl"> 🌞/🌜 </button>
+<div class="fixed right-10 top-10 z-10">
+  <button
+    id="theme-toggle-selector"
+    class="p-4 text-4xl bg-custom-blue-dark hover:bg-custom-blue text-white rounded-full border-2
+    dark:border-white border-gray-600 transition-colors"
+  >
+  </button>
+  <script>
+    const themeToggleSelector = document.getElementById(
+      "theme-toggle-selector"
+    );
+    if (themeToggleSelector) {
+      themeToggleSelector.addEventListener("click", () => {
+        const currentTheme = localStorage.getItem("theme");
+        const newTheme = currentTheme === "light" ? "dark" : "light";
+        setTheme(newTheme);
+      });
+    }
+
+    const localStorageTheme = localStorage.getItem("theme");
+    if (localStorageTheme) {
+      setTheme(localStorageTheme);
+    } else {
+      //View system default theme
+      const currentTheme =
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light";
+      setTheme(currentTheme);
+    }
+
+    function setTheme(newTheme: string) {
+      document.documentElement.classList.toggle("dark", newTheme === "dark");
+      localStorage.setItem("theme", newTheme);
+      const lightIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" 
+      fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+      class="icon icon-tabler icons-tabler-outline icon-tabler-sun transition-all duration-300 transform hover:scale-150">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
+  <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" />
+</svg>`;
+      const darkIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" 
+      fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
+      class="icon icon-tabler icons-tabler-outline icon-tabler-moon transition-all duration-300 transform 
+      hover:scale-150">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+</svg>`;
+      const icon = newTheme === "light" ? darkIcon : lightIcon;
+      if (themeToggleSelector) themeToggleSelector.innerHTML = icon;
+    }
+  </script>
 </div>
-<script>
-  const themeToggleSelector = document.getElementById("theme-toggle-selector");
-  if (themeToggleSelector) {
-    themeToggleSelector.addEventListener("click", () => {
-      const currentTheme = localStorage.getItem("theme");
-      const newTheme = currentTheme === "light" ? "dark" : "light";
-      setTheme(newTheme);
-    });
-  }
-
-  const localStorageTheme = localStorage.getItem("theme");
-  if (localStorageTheme) {
-    setTheme(localStorageTheme);
-  } else {
-    //View system default theme
-    const currentTheme =
-      window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light";
-    setTheme(currentTheme);
-  }
-
-  function setTheme(newTheme: string) {
-    document.documentElement.classList.toggle("dark", newTheme === "dark");
-    localStorage.setItem("theme", newTheme);
-  }
-</script>
