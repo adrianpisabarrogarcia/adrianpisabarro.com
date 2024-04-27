@@ -1,0 +1,198 @@
+---
+// Importa los iconos necesarios
+import JSIcon from "./icons/js.astro";
+import AstroIcon from "./icons/astro.astro";
+import AngularIcon from "./icons/angular.astro";
+import TailwindIcon from "./icons/tailwind.astro";
+import BootstrapIcon from "./icons/bootstrap.astro";
+import TypescriptIcon from "./icons/typescript.astro";
+import SpringIcon from "./icons/spring.astro";
+import FastAPIIcon from "./icons/fastapi.astro";
+import LaravelIcon from "./icons/laravel.astro";
+import SlimIcon from "./icons/php.astro";
+import OracleIcon from "./icons/oracle.astro";
+import MongoDBIcon from "./icons/mongodb.astro";
+import FirebaseIcon from "./icons/firebase.astro";
+import MySQLIcon from "./icons/mysql.astro";
+import S3Icon from "./icons/s3.astro";
+import DockerIcon from "./icons/docker.astro";
+import KubernetesIcon from "./icons/kubernetes.astro";
+import JenkinsIcon from "./icons/jenkins.astro";
+import GitLabCIIcon from "./icons/gitlab-ci.astro";
+import OpenShiftIcon from "./icons/openshift.astro";
+import VMWareTanzuIcon from "./icons/tanzu.astro";
+const categories = [
+  {
+    name: "Frontend",
+    technologies: [
+      {
+        name: "JavaScript",
+        icon: JSIcon,
+        url: "https://developer.mozilla.org/es/docs/Web/JavaScript",
+      },
+      {
+        name: "Typescript",
+        icon: TypescriptIcon,
+        url: "https://www.typescriptlang.org/",
+      },
+      {
+        name: "Astro",
+        icon: AstroIcon,
+        url: "https://astro.build/",
+      },
+      {
+        name: "Angular",
+        icon: AngularIcon,
+        url: "https://angular.dev/",
+      },
+      {
+        name: "Tailwind",
+        icon: TailwindIcon,
+        url: "https://tailwindcss.com/",
+      },
+      {
+        name: "Bootstrap",
+        icon: BootstrapIcon,
+        url: "https://getbootstrap.com/",
+      },
+    ],
+  },
+  {
+    name: "Backend",
+    technologies: [
+      {
+        name: "Spring Boot (Java)",
+        icon: SpringIcon,
+        url: "https://spring.io/projects/spring-boot",
+      },
+      {
+        name: "FastAPI (Python)",
+        icon: FastAPIIcon,
+        url: "https://fastapi.tiangolo.com/",
+      },
+      {
+        name: "Laravel (PHP)",
+        icon: LaravelIcon,
+        url: "https://laravel.com/",
+      },
+      {
+        name: "Slim (PHP)",
+        icon: SlimIcon,
+        url: "https://www.slimframework.com/",
+      },
+    ],
+  },
+  {
+    name: "Data",
+    technologies: [
+      {
+        name: "Oracle",
+        icon: OracleIcon,
+        url: "https://www.oracle.com/",
+      },
+      {
+        name: "MongoDB",
+        icon: MongoDBIcon,
+        url: "https://www.mongodb.com/",
+      },
+      {
+        name: "Firebase",
+        icon: FirebaseIcon,
+        url: "https://firebase.google.com/",
+      },
+      {
+        name: "MySQL",
+        icon: MySQLIcon,
+        url: "https://www.mysql.com/",
+      },
+      {
+        name: "S3",
+        icon: S3Icon,
+        url: "https://aws.amazon.com/s3/",
+      },
+    ],
+  },
+  {
+    name: "DevOps",
+    technologies: [
+      {
+        name: "Docker",
+        icon: DockerIcon,
+        url: "https://www.docker.com/",
+      },
+      {
+        name: "Kubernetes",
+        icon: KubernetesIcon,
+        url: "https://kubernetes.io/",
+      },
+      {
+        name: "Jenkins",
+        icon: JenkinsIcon,
+        url: "https://www.jenkins.io/",
+      },
+      {
+        name: "GitLab CI",
+        icon: GitLabCIIcon,
+        url: "https://docs.gitlab.com/ee/ci/",
+      },
+      {
+        name: "OpenShift",
+        icon: OpenShiftIcon,
+        url: "https://www.openshift.com/",
+      },
+      {
+        name: "VMWare Tanzu",
+        icon: VMWareTanzuIcon,
+        url: "https://tanzu.vmware.com/",
+      },
+    ],
+  },
+];
+---
+
+<!-- Renderiza las categorías y tecnologías -->
+<section class="sm:mt-20 mt-10">
+  <h2 class="flex items-center text-3xl font-semibold">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="40"
+      height="40"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="icon icon-tabler icons-tabler-outline icon-tabler-terminal-2 pr-1"
+      ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+        d="M8 9l3 3l-3 3"></path><path d="M13 15h3"></path><path
+        d="M3 4m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2H5a2 2 0 0 1 -2 -2z"
+      ></path></svg
+    >
+    Tecnologías
+  </h2>
+  <div>
+    {
+      categories.map((category) => (
+        <article>
+          <h3 class="text-xl font-semibold mt-5">{category.name}</h3>
+          <div class="mt-2 flex flex-row flex-wrap">
+            {category.technologies.map((tech) => (
+              <a
+                class="bg-custom-blue-dark hover:bg-custom-blue border text-white rounded-full flex pt-1 pb-1 ps-2 pe-2 text-sm items-center justify-center me-2 mb-2"
+                href={tech.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span class="me-1">
+                  <tech.icon />
+                </span>
+                {tech.name}
+              </a>
+            ))}
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</section>
