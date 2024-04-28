@@ -1,10 +1,119 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import { getEntry, getEntries } from "astro:content";
+import { getEntry } from "astro:content";
+import { marked } from "marked"; // Asegúrate de que 'marked' está correctamente instalado y su tipo importado si es necesario
 
 const { slug } = Astro.params;
 const post = await getEntry("blog", slug as string);
-console.log(post);
+
+let htmlContent = "";
+if (post) {
+  htmlContent = await marked(post.body);
+  htmlContent = htmlContent.replace(
+    /<a href/g,
+    '<a target="_blank" rel="noopener noreferrer" class="text-custom-blue hover:underline" href'
+  );
+  htmlContent = htmlContent.replace(
+    /<iframe/g,
+    '<iframe class="w-full min-h-96 rounded-lg" loading="lazy"'
+  );
+  htmlContent += `
+  <style>
+    .article > p {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+    .article > img {
+      max-width: 100%;
+      height: auto;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      margin-radius: 0.5rem;
+    }
+    .article > h1 {
+      font-size: 2rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      font-weight: bold;
+    }
+    .article > h2 {
+      font-size: 1.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+      font-weight: bold;
+    }
+    .article > h3 {
+      font-size: 1.25rem;
+      margin-top: 1.25rem;
+      margin-bottom: 1rem;
+      font-weight: bold;
+    }
+    .article > h4 {
+      font-size: 1rem;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      font-weight: bold;
+    }
+    .article > h5 {
+      font-size: 0.875rem;
+      margin-top: 0.875rem;
+      margin-bottom: 1rem;
+      font-weight: bold;
+    }
+    .article > h6 {
+      font-size: 0.75rem;
+      margin-top: 0.75rem;
+      margin-bottom: 1rem;
+      font-weight: bold;
+    }
+    .article > blockquote {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      padding: 0.5rem;
+      background-color: #f3f4f6;
+      border-left: 0.25rem solid #1a202c;
+    }
+    .article > ul {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+    .article > ol {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+    .article > li {
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .article > code {
+      padding: 0.2rem;
+      background-color: #f7fafc;
+      border-radius: 0.25rem;
+    }
+    .article > pre {
+      padding: 0.5rem;
+      background-color: #f7fafc;
+      border-radius: 0.5rem;
+    }
+    .article ol {
+        counter-reset: lista;  /* Inicia el contador */
+        list-style-type: none; /* Remueve el estilo por defecto */
+    }
+    .article li {
+        counter-increment: lista; /* Incrementa el contador */
+        margin-bottom: 10px; /* Espacio entre elementos */
+    }
+    .article li:before {
+        content: counter(lista) ". "; /* Inserta el número antes del elemento */
+        font-weight: bold; /* Fuente en negrita */
+    }
+    .article ol ol {
+        margin-left: 2rem;
+        margin-top: 0.5rem;
+    }
+   </style>
+  `;
+}
 
 function formatDate(date: Date) {
   return new Intl.DateTimeFormat("es-ES", {
@@ -15,7 +124,11 @@ function formatDate(date: Date) {
 }
 ---
 
-<Layout title={post ? post.data.title : "Post not found"}>
+<Layout
+  title={post
+    ? post.data.title + " - Porfolio de Adrián Pisabarro"
+    : "Post not found"}
+>
   <div style="margin-top: 40px;">
     <a
       href="/"
@@ -23,18 +136,26 @@ function formatDate(date: Date) {
       >← Ir atrás</a
     >
   </div>
-  <article class="prose lg:prose-xl w-100 mt-5 p-5 shadow-lg rounded-lg">
+  <article
+    class="prose lg:prose-xl w-100 mt-5 p-5 shadow-2xl shadow-slate-700 rounded-lg"
+  >
     {
       post ? (
         <>
-          <h1 class="text-3xl font-bold">{post.data.title}</h1>
-          <p class="text-gray-500">{formatDate(new Date(post.data.date))}</p>
+          <h1 class="text-5xl font-bold">{post.data.title}</h1>
+          <p class="text-gray-500">
+            📆 {formatDate(new Date(post.data.date))} · 🏷️ {post.data.category} · 
+            🙋‍♂️ {post.data.author} · ⏰ {post.data.duration} de lectura.
+          </p>
+            <p class="text-gray-500">
+                💬 {post.data.description}
+            </p>
           <img
             src={post.data.image.src}
             alt={post.data.image.alt}
-            class="rounded"
+            class="rounded mt-5 mb-5"
           />
-          <div>{post.body}</div>
+          <div class="article mt-10" set:html={htmlContent} />
         </>
       ) : (
         <p>Post not found.</p>
