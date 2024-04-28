@@ -1,54 +1,38 @@
-# Astro Starter Kit: Basics
+# adrianpisabarro.com
+
+## Descripción 📃
+
+Este es el sitio web personal de Adrian Pisabarro García. En él, podrás encontrar información sobre mi perfil profesional, mis proyectos, mis habilidades técnicas y mis intereses.
+
+También dispone de un apartado de blog donde publicaré contenido técnico y de desarrollo web de forma periódica.
+
+## Instalación 🖥️
+
+Pasos para instalar el proyecto:
 
 ```sh
-npm create astro@latest -- --template basics
+git clone https://github.com/adrianpisabarrogarcia/adrianpisabarro.com
+cd adrianpisabarro.com
+npm install
+npm run dev
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## Contribución 🫶
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Puedes constribuir al proyecto, abriendo una issue con los problemas que hayas encontrado, incluso hacer un fork y proponer una pull-request para poder aportar al proyecto. Si lo haces, muchas gracias por tu tiempo y esfuerzo, estarás incluido en el README como contribuidor del proyecto.
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+## Licencia ℹ️
 
-## 🚀 Project Structure
+Este proyecto está licenciado bajo la licencia **Creative Commons Attribution-NonCommercial (CC BY-NC)**. Esto significa que puedes compartir (copiar y redistribuir el material en cualquier medio o formato) y adaptar (remezclar, transformar y construir sobre el material) bajo las siguientes condiciones:
 
-Inside of your Astro project, you'll see the following folders and files:
+- **Atribución** — Debes dar crédito de manera adecuada, proporcionar un enlace a la licencia e indicar si se han realizado cambios. Puedes hacerlo de cualquier manera razonable, pero no de una manera que sugiera que el licenciante te respalda a ti o al uso que hagas del material.
+- **NoComercial** — No puedes utilizar el material con fines comerciales.
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+Para más información, por favor visita [Creative Commons — Attribution-NonCommercial 4.0 International — CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/).
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Contacto 📞
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Puedes contactarme a través de redes sociales:
+- [LinkedIn](https://www.linkedin.com/in/adrian-pisabarro/)
+- [Twitter](https://twitter.com/adriantxupisi)
+- [Instagram](https://www.instagram.com/adriantxupisi)
