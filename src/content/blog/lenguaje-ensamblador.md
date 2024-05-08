@@ -8,7 +8,6 @@ image:
   src: "/assets/images/blog/lenguaje-ensamblador.webp"
   alt: "Imagen de la publicación de tu blog"
 duration: "5 min"
-content: ""
 author: "Adrián Pisabarro García"
 ---
 Como instructor, he creado un pequeño curso de Lenguaje Ensamblador que se suele dar en clases de ingeniería informática, en asignaturas como introducción a computadores o principios de diseño de sistemas digitales; así como arquitectura de computadores.

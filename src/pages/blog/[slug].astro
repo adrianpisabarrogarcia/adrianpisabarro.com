@@ -1,7 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { getEntry } from "astro:content";
-import { marked } from "marked"; // Asegúrate de que 'marked' está correctamente instalado y su tipo importado si es necesario
+import { marked } from "marked";
 
 const { slug } = Astro.params;
 const post = await getEntry("blog", slug as string);
