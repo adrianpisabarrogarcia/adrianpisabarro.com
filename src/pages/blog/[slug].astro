@@ -6,6 +6,8 @@ import { marked } from "marked";
 const { slug } = Astro.params;
 const post = await getEntry("blog", slug as string);
 
+if (post === undefined) return Astro.redirect('/404');
+
 let htmlContent = "";
 if (post) {
   htmlContent = await marked(post.body);
@@ -136,30 +138,37 @@ function formatDate(date: Date) {
       >← Ir atrás</a
     >
   </div>
-  <article
-    class="prose lg:prose-xl w-100 mt-5 p-5 shadow-2xl shadow-slate-700 rounded-lg"
-  >
-    {
-      post ? (
-        <>
-          <h1 class="text-5xl font-bold">{post.data.title}</h1>
-          <p class="text-gray-500">
-            📆 {formatDate(new Date(post.data.date))} · 🏷️ {post.data.category} · 
-            🙋‍♂️ {post.data.author} · ⏰ {post.data.duration} de lectura.
+
+  {
+    post ? (
+      <>
+        <article class="prose lg:prose-xl w-100 mt-5 p-5 shadow-2xl shadow-slate-700 rounded-lg">
+          <h1 class="mt-2 text-5xl font-bold">{post.data.title}</h1>
+          <p class="mt-3 text-gray-500">
+            📆 {formatDate(new Date(post.data.date))} · 🏷️ {post.data.category}{" "}
+            · 🙋‍♂️ {post.data.author} · ⏰ {post.data.duration} de lectura.
           </p>
-            <p class="text-gray-500">
-                💬 {post.data.description}
-            </p>
+          <p class="text-gray-500">💬 {post.data.description}</p>
           <img
             src={post.data.image.src}
             alt={post.data.image.alt}
             class="rounded mt-5 mb-5"
           />
           <div class="article mt-10" set:html={htmlContent} />
-        </>
-      ) : (
-        <p>Post not found.</p>
-      )
-    }
-  </article>
+        </article>
+      </>
+    ) : (
+      <>
+        <div class="flex items-center justify-center pt-24 pb-12">
+          <div class="max-w-sm w-full text-center">
+            <div class="text-8xl mb-4">⚠️</div>
+            <h1 class="text-2xl font-semibold mb-2">Post Not Found</h1>
+            <p class="text-gray-600 dark:text-slate-300">
+              Lo siento, la publicación que estás buscando no existe.
+            </p>
+          </div>
+        </div>
+      </>
+    )
+  }
 </Layout>
