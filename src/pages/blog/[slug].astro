@@ -158,94 +158,94 @@ function formatDate(date: Date) {
                 </p>
               </div>
             </div>
-          <div class="flex space-x-4 mt-3 md:mt-0">
-            <button
-              onclick="sharePost('facebook')"
-              class="bg-blue-600 text-white p-2 rounded-full hover:scale-110 transition-transform duration-200"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="icon icon-tabler icons-tabler-outline icon-tabler-brand-facebook"
+            <div class="flex space-x-4 mt-3 md:mt-0">
+              <button
+                onclick="sharePost('facebook')"
+                class="bg-blue-600 text-white p-2 rounded-full hover:scale-110 transition-transform duration-200"
               >
-                <>
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" />
-                </>
-              </svg>
-            </button>
-            <button
-              onclick="sharePost('twitter')"
-              class="bg-blue-400 text-white p-2 rounded-full hover:scale-110 transition-transform duration-200"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="icon icon-tabler icons-tabler-outline icon-tabler-brand-x"
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-facebook"
+                >
+                  <>
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" />
+                  </>
+                </svg>
+              </button>
+              <button
+                onclick="sharePost('twitter')"
+                class="bg-blue-400 text-white p-2 rounded-full hover:scale-110 transition-transform duration-200"
               >
-                <>
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
-                  <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
-                </>
-              </svg>
-            </button>
-            <button
-              onclick="sharePost('linkedin')"
-              class="bg-blue-700 text-white p-2 rounded-full hover:scale-110 transition-transform duration-200"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="icon icon-tabler icons-tabler-outline icon-tabler-brand-linkedin"
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-x"
+                >
+                  <>
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
+                    <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
+                  </>
+                </svg>
+              </button>
+              <button
+                onclick="sharePost('linkedin')"
+                class="bg-blue-700 text-white p-2 rounded-full hover:scale-110 transition-transform duration-200"
               >
-                <>
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
-                  <path d="M8 11l0 5" />
-                  <path d="M8 8l0 .01" />
-                  <path d="M12 16l0 -5" />
-                  <path d="M16 16v-3a2 2 0 0 0 -4 0" />
-                </>
-              </svg>
-                  <script>
-      function sharePost(platform: string) {
-          const url = window.location.href;
-          let shareUrl = '';
-          if (platform === 'facebook') {
-              shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
-          } else if (platform === 'twitter') {
-              shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=Check%20this%20out!`;
-          } else if (platform === 'linkedin') {
-              shareUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${url}`;
-          }
-          window.open(shareUrl, '_blank', 'width=600,height=400');
-      }
-  </script>
-            </button>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-linkedin"
+                >
+                  <>
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
+                    <path d="M8 11l0 5" />
+                    <path d="M8 8l0 .01" />
+                    <path d="M12 16l0 -5" />
+                    <path d="M16 16v-3a2 2 0 0 0 -4 0" />
+                  </>
+                </svg>
+              </button>
+            </div>
           </div>
-          </div>
+          <script is:inline>
+            function sharePost(platform) {
+              const url = window.location.href;
+              let shareUrl = "";
+              if (platform === "facebook") {
+                shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+              } else if (platform === "twitter") {
+                shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=Check%20this%20out!`;
+              } else if (platform === "linkedin") {
+                shareUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${url}`;
+              }
+              window.open(shareUrl, "_blank", "width=600,height=400");
+            }
+          </script>
 
           <img
             src={post.data.image.src}
@@ -270,3 +270,4 @@ function formatDate(date: Date) {
     )
   }
 </Layout>
+
