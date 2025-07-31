@@ -228,7 +228,7 @@ function formatDate(date: Date) {
                 </>
               </svg>
                   <script>
-      function sharePost(platform) {
+      function sharePost(platform: string) {
           const url = window.location.href;
           let shareUrl = '';
           if (platform === 'facebook') {
