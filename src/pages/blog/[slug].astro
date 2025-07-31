@@ -142,6 +142,14 @@ function formatDate(date: Date) {
   {
     post ? (
       <>
+      <head>
+        <title>{post.data.title}</title>
+        <meta property="og:title" content={post.data.title} />
+        <meta property="og:description" content={post.data.description || "Lee este artículo interesante."} />
+        <meta property="og:url" content={`https://adrianpisabarro.com/blog/${slug}`} />
+        <meta property="og:type" content="article" />
+        <meta property="og:image" content={`https://adrianpisabarro.com${post.data.image.src}`} />
+      </head>
         <article class="prose lg:prose-xl w-100 mt-5 p-5 shadow-2xl shadow-slate-700 rounded-lg">
           <h1 class="mt-2 text-5xl font-bold">{post.data.title}</h1>
           <div class="flex flex-col md:flex-row place-content-between md:items-center">
@@ -239,7 +247,7 @@ function formatDate(date: Date) {
               if (platform === "facebook") {
                 shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
               } else if (platform === "twitter") {
-                shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=Check%20this%20out!`;
+                shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=Echa%20un%20vistazo%20al%20artículo!`;
               } else if (platform === "linkedin") {
                 shareUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${url}`;
               }
