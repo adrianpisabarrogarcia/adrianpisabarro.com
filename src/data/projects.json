@@ -1,0 +1,191 @@
+[
+  {
+    "title": "Escuela de Pastoral Juvenil",
+    "image": "/assets/images/escuela-de-pastoral-con-jovenes.webp",
+    "description": "Portfolio personal para mostrar diferentes proyectos y trabajos que hace una diseñadora gráfica y animadora 2D/3D.",
+    "technologies": [
+      {
+        "name": "Astro",
+        "url": "https://astro.build/",
+        "svg": "astro"
+      },
+      {
+        "name": "Tailwind CSS",
+        "url": "https://tailwindcss.com/",
+        "svg": "tailwind"
+      }
+    ],
+    "links": [
+      {
+        "name": "Ver proyecto",
+        "url": "https://escuelapastoralconjovenes.org/",
+        "svg": "external-link"
+      },
+      {
+        "name": "GitHub",
+        "url": "https://github.com/adrianpisabarrogarcia/escuela-de-pastoral-con-jovenes",
+        "svg": "github"
+      }
+    ]
+  },
+  {
+    "title": "Nazareth's Portfolio",
+    "image": "/assets/images/uruvielsa.webp",
+    "description": "Portfolio personal para mostrar diferentes proyectos y trabajos que hace una diseñadora gráfica y animadora 2D/3D.",
+    "technologies": [
+      {
+        "name": "Astro",
+        "url": "https://astro.build/",
+        "svg": "astro"
+      },
+      {
+        "name": "Tailwind CSS",
+        "url": "https://tailwindcss.com/",
+        "svg": "tailwind"
+      }
+    ],
+    "links": [
+      {
+        "name": "Ver proyecto",
+        "url": "https://www.uruvielsa.com/",
+        "svg": "external-link"
+      },
+      {
+        "name": "GitHub",
+        "url": "https://github.com/adrianpisabarrogarcia/uruvielsa",
+        "svg": "github"
+      }
+    ]
+  },
+  {
+    "title": "Laboral Timer",
+    "image": "/assets/images/laboral-timer.webp",
+    "description": "Aplicación web para llevar el control de horas trabajadas y generar reportes de las mismas.",
+    "technologies": [
+      {
+        "name": "Angular",
+        "url": "https://angular.dev/",
+        "svg": "angular"
+      },
+      {
+        "name": "Tailwind CSS",
+        "url": "https://tailwindcss.com/",
+        "svg": "tailwind"
+      },
+      {
+        "name": "PrimeNG",
+        "url": "https://primeng.org/",
+        "svg": "box"
+      }
+    ],
+    "links": [
+      {
+        "name": "Ver proyecto",
+        "url": "https://laboraltimer.adrianpisabarro.com/",
+        "svg": "external-link"
+      },
+      {
+        "name": "GitHub",
+        "url": "https://github.com/adrianpisabarrogarcia/laboral-timer",
+        "svg": "github"
+      }
+    ]
+  },
+  {
+    "title": "Diagnóstico de Pastoral con Jóvenes",
+    "image": "/assets/images/diagnostico-pastoral-con-jovenes.webp",
+    "description": "Aplicación web para realizar un diagnóstico de la pastoral con jóvenes en una parroquia, colegios, movimientos, etc. Este genera un informe de manera visual con gráficos y datos con los resultados. Estos datos se pueden imprimir y comopartir de manera fácil",
+    "technologies": [
+      {
+        "name": "PHP",
+        "url": "https://www.php.net/",
+        "svg": "php"
+      },
+      {
+        "name": "Chart.js",
+        "url": "https://www.chartjs.org/",
+        "svg": "chart"
+      },
+      {
+        "name": "MySQL",
+        "url": "https://www.mysql.com/",
+        "svg": "mysql"
+      }
+    ],
+    "links": [
+      {
+        "name": "Ver proyecto",
+        "url": "https://diagnostico.rpj.es/",
+        "svg": "external-link"
+      },
+      {
+        "name": "GitHub",
+        "url": "https://github.com/adrianpisabarrogarcia/diagnostico-de-pastoral-con-jovenes",
+        "svg": "github"
+      }
+    ]
+  },
+  {
+    "title": "SuperBag",
+    "image": "/assets/images/superbag.webp",
+    "description": "Aplicación móvil para gestionar la compra de una familia.",
+    "technologies": [
+      {
+        "name": "Kotlin",
+        "url": "https://kotlinlang.org/",
+        "svg": "kotlin"
+      },
+      {
+        "name": "Firebase",
+        "url": "https://firebase.google.com/",
+        "svg": "firebase"
+      }
+    ],
+    "links": [
+      {
+        "name": "Documentación",
+        "url": "https://github.com/adrianpisabarrogarcia/SuperBag/blob/main/SuperBag%20Manual%20y%20Documentaci%C3%B3n.pdf",
+        "svg": "doc"
+      },
+      {
+        "name": "GitHub",
+        "url": "https://github.com/adrianpisabarrogarcia/laboral-timer",
+        "svg": "github"
+      }
+    ]
+  },
+  {
+    "title": "EgiConnect",
+    "image": "/assets/images/egiconnect.webp",
+    "description": "Aplicación web para gestionar la comunicación entre equipos, es algo parecido a Microsoft Teams o Slack pero más sencillo. Contiene un chat, tareas, archivos, gestión de proyectos, etc.",
+    "technologies": [
+      {
+        "name": "Laravel",
+        "url": "https://laravel.com/",
+        "svg": "laravel"
+      },
+      {
+        "name": "JQuery",
+        "url": "https://jquery.com/",
+        "svg": "jquery"
+      },
+      {
+        "name": "Bootstrap",
+        "url": "https://getbootstrap.com/",
+        "svg": "bootstrap"
+      },
+      {
+        "name": "MySQL",
+        "url": "https://www.mysql.com/",
+        "svg": "mysql"
+      }
+    ],
+    "links": [
+      {
+        "name": "GitHub",
+        "url": "https://github.com/adrianpisabarrogarcia/egiconnect",
+        "svg": "github"
+      }
+    ]
+  }
+]

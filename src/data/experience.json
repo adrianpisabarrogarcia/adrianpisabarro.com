@@ -1,0 +1,44 @@
+[
+  {
+    "title": "Technical Solutions en CaixaBank Tech",
+    "date": "Abril 2026 - Actualidad",
+    "responsibilities": [
+      "Arquitecto en el grupo transversal de Technical Solutions, responsable del gobierno y diseño de la arquitectura de software.",
+      "Liderazgo técnico del proyecto estratégico \"Analista del Futuro\", dirigiendo a los equipos de desarrollo.",
+      "Integración de soluciones basadas en Inteligencia Artificial para la generación automatizada de informes.",
+      "Alto impacto en negocio: transformación y optimización de los procesos de concesión de préstamos (Retail y Empresas).",
+      "Mejora y automatización operativa en el ciclo de vida del crédito, análisis de riesgos y gestión de expedientes de mora y penalizaciones."
+    ]
+  },
+  {
+    "title": "Arquitecto de Software en Teknei",
+    "date": "Octubre 2023 - Abril 2026",
+    "responsibilities": [
+      "Formar parte del equipo horizontal de arquitectura de CESCE.",
+      "Formar parte del equipo DevOps (CI/CD) interno de la empresa.",
+      "Diseño de arquitectura de microservicios y microfrontales en varios proyectos relevantes y puesta en marcha en kubernetes y contenedores. PoCs de renovación de arquitectura y despliegues en Kubernetes en cliente EJIE (Gobierno Vasco)."
+    ]
+  },
+  {
+    "title": "Desarrollador web en Teknei",
+    "date": "Febrero 2022 - Actualidad",
+    "responsibilities": [
+      "Programador de aplicaciones web para proyectos de diferentes departamentos como por ejemplo, innovación, cultura, trabajo del Gobierno Vasco que impactan en miles de ciudadanos que las utilizan a diario. Fomentar innovación, clean code, gestión agile de equipos y mejora continua.",
+      "Analizar proyectos técnicamente, resolución de inicidencias y reunión con clientes. Formar y subir de nivel a los equipos de desarrollo."
+    ]
+  },
+  {
+    "title": "Desarrollador web en Ibaiscanbit",
+    "date": "Febrero 2021 - Febrero 2022",
+    "responsibilities": [
+      "Realizar mantenimientos y desarrollos especificos de DSpace, OJS y la gestión de un complejo deportivo. Algunos clientes de Ibaiscanbit son: Gobiernos autonómicos, Banco de España, universidades y otras empresas/instituciones privadas y públicas."
+    ]
+  },
+  {
+    "title": "Desarrollador web en ICCE",
+    "date": "Enero 2021 - Enero 2022",
+    "responsibilities": [
+      "Realizar labores de desarrollo y mantenimiento web dentro de un proyecto de las Escuelas Pías. Páginas basadas en Wordpress junto con HTML, CSS, PHP y JQuery."
+    ]
+  }
+]
