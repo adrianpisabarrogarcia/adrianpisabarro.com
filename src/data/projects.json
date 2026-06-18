@@ -1,5 +1,117 @@
 [
   {
+    "title": "Con el Papa en España",
+    "image": "/assets/images/conelpapa.webp",
+    "description": "Web oficial del Viaje Apostólico a España de Su Santidad el Papa León XIV, con información sobre el itinerario, actos, inscripciones y recursos para los fieles. Colaboración en el desarrollo.",
+    "technologies": [
+      {
+        "name": "Astro",
+        "url": "https://astro.build/",
+        "svg": "astro"
+      },
+      {
+        "name": "GCP",
+        "url": "https://cloud.google.com/",
+        "svg": "gcp"
+      },
+      {
+        "name": "Firebase",
+        "url": "https://firebase.google.com/",
+        "svg": "firebase"
+      },
+      {
+        "name": "Directus",
+        "url": "https://directus.io/",
+        "svg": "directus"
+      }
+    ],
+    "links": [
+      {
+        "name": "Ver proyecto",
+        "url": "https://conelpapa.es/",
+        "svg": "external-link"
+      }
+    ]
+  },
+  {
+    "title": "Web oficial de la Red Pastoral Juvenil",
+    "image": "/assets/images/red-pastoral-juvenil.webp",
+    "description": "Web oficial de la Red de Pastoral Juvenil, con información sobre la organización, sus actividades, recursos y noticias para animadores y responsables de pastoral con jóvenes.",
+    "technologies": [
+      {
+        "name": "Astro",
+        "url": "https://astro.build/",
+        "svg": "astro"
+      },
+      {
+        "name": "Strapi",
+        "url": "https://strapi.io/",
+        "svg": "strapi"
+      },
+      {
+        "name": "VPS",
+        "url": "https://en.wikipedia.org/wiki/Virtual_private_server",
+        "svg": "vps"
+      },
+      {
+        "name": "Vercel",
+        "url": "https://vercel.com/",
+        "svg": "vercel"
+      }
+    ],
+    "links": [
+      {
+        "name": "Ver proyecto",
+        "url": "https://www.redpastoraljuvenil.org/",
+        "svg": "external-link"
+      },
+      {
+        "name": "GitHub",
+        "url": "https://github.com/adrianpisabarrogarcia/rpj-front",
+        "svg": "github"
+      }
+    ]
+  },
+  {
+    "title": "Academia de la Red Pastoral Juvenil",
+    "image": "/assets/images/academia-rpj.webp",
+    "description": "Plataforma de formación online para la Red de Pastoral Juvenil, donde se publican cursos, recursos y materiales formativos para animadores y responsables de pastoral con jóvenes.",
+    "technologies": [
+      {
+        "name": "Astro",
+        "url": "https://astro.build/",
+        "svg": "astro"
+      },
+      {
+        "name": "Turso",
+        "url": "https://turso.tech/",
+        "svg": "turso"
+      },
+      {
+        "name": "Stripe",
+        "url": "https://stripe.com/",
+        "svg": "stripe"
+      },
+      {
+        "name": "Vercel",
+        "url": "https://vercel.com/",
+        "svg": "vercel"
+      }
+    ],
+    "links": [
+      {
+        "name": "Ver proyecto",
+        "url": "https://academy.redpastoraljuvenil.org/",
+        "svg": "external-link"
+      },
+      {
+        "name": "GitHub",
+        "url": "https://github.com/adrianpisabarrogarcia/rpjacademy",
+        "svg": "github"
+      }
+    ]
+  },
+  {
     "title": "Escuela de Pastoral Juvenil",
     "image": "/assets/images/escuela-de-pastoral-con-jovenes.webp",
     "description": "Portfolio personal para mostrar diferentes proyectos y trabajos que hace una diseñadora gráfica y animadora 2D/3D.",

@@ -14,6 +14,13 @@ import DocIcon from "./icons/doc.astro";
 import LaravelIcon from "./icons/laravel.astro";
 import JQueryIcon from "./icons/jquery.astro";
 import BootstrapIcon from "./icons/bootstrap.astro";
+import VercelIcon from "./icons/vercel.astro";
+import TursoIcon from "./icons/turso.astro";
+import StripeIcon from "./icons/stripe.astro";
+import StrapiIcon from "./icons/strapi.astro";
+import VpsIcon from "./icons/vps.astro";
+import GcpIcon from "./icons/gcp.astro";
+import DirectusIcon from "./icons/directus.astro";
 
 import projects from "../data/projects.json";
 ---
@@ -74,6 +81,13 @@ import projects from "../data/projects.json";
                     {tech.svg === "laravel" && <LaravelIcon />}
                     {tech.svg === "jquery" && <JQueryIcon />}
                     {tech.svg === "bootstrap" && <BootstrapIcon />}
+                    {tech.svg === "vercel" && <VercelIcon />}
+                    {tech.svg === "turso" && <TursoIcon />}
+                    {tech.svg === "stripe" && <StripeIcon />}
+                    {tech.svg === "strapi" && <StrapiIcon />}
+                    {tech.svg === "vps" && <VpsIcon />}
+                    {tech.svg === "gcp" && <GcpIcon />}
+                    {tech.svg === "directus" && <DirectusIcon />}
                   </span>
                   {tech.name}
                 </a>
