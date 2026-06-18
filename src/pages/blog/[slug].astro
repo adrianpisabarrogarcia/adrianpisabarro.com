@@ -87,27 +87,44 @@ if (post) {
       margin-top: 0.5rem;
       margin-bottom: 0.5rem;
     }
-    .article > code {
-      padding: 0.2rem;
-      background-color: #f7fafc;
+    .article code:not(pre code) {
+      padding: 0.15rem 0.4rem;
+      background-color: #e2e8f0 !important;
+      color: #1a202c !important;
       border-radius: 0.25rem;
+      font-size: 0.875em;
+      font-family: ui-monospace, monospace;
     }
-    .article > pre {
-      padding: 0.5rem;
-      background-color: #f7fafc;
+    .article pre {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
       border-radius: 0.5rem;
+      overflow-x: auto;
+    }
+    .article pre code {
+      font-size: 0.875rem;
+      font-family: ui-monospace, monospace;
     }
     .article ol {
-        counter-reset: lista;  /* Inicia el contador */
-        list-style-type: none; /* Remueve el estilo por defecto */
+        counter-reset: lista;
+        list-style-type: none;
+    }
+    .article ul {
+        list-style-type: disc;
+        padding-left: 1.5rem;
     }
     .article li {
-        counter-increment: lista; /* Incrementa el contador */
-        margin-bottom: 10px; /* Espacio entre elementos */
+        margin-bottom: 10px;
     }
-    .article li:before {
-        content: counter(lista) ". "; /* Inserta el número antes del elemento */
-        font-weight: bold; /* Fuente en negrita */
+    .article ol > li {
+        counter-increment: lista;
+    }
+    .article ol > li:before {
+        content: counter(lista) ". ";
+        font-weight: bold;
+    }
+    .article ul > li:before {
+        content: none;
     }
     .article ol ol {
         margin-left: 2rem;
@@ -262,6 +279,9 @@ function formatDate(date: Date) {
           />
           <div class="article mt-10" set:html={htmlContent} />
         </article>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css" />
+        <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+        <script is:inline>hljs.highlightAll();</script>
       </>
     ) : (
       <>
