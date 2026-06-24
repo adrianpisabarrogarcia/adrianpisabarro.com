@@ -1,5 +1,39 @@
 [
   {
+    "title": "conelpapa.es",
+    "image": "/assets/images/conelpapa.webp",
+    "description": "Web oficial del Viaje Apostólico a España de Su Santidad el Papa León XIV, con información sobre el itinerario, actos, inscripciones y recursos para los fieles. Colaboración en el desarrollo.",
+    "technologies": [
+      {
+        "name": "Astro",
+        "url": "https://astro.build/",
+        "svg": "astro"
+      },
+      {
+        "name": "GCP",
+        "url": "https://cloud.google.com/",
+        "svg": "gcp"
+      },
+      {
+        "name": "Firebase",
+        "url": "https://firebase.google.com/",
+        "svg": "firebase"
+      },
+      {
+        "name": "Directus",
+        "url": "https://directus.io/",
+        "svg": "directus"
+      }
+    ],
+    "links": [
+      {
+        "name": "Ver proyecto",
+        "url": "https://conelpapa.es/",
+        "svg": "external-link"
+      }
+    ]
+  },
+  {
     "title": "Ahorro Luz",
     "image": "/assets/images/ahorroluz.webp",
     "description": "Aplicación web para consultar el precio de la luz hoy por horas en tiempo real en España (PVPC). Permite descubrir las horas más baratas y ahorrar en la factura eléctrica con un recomendador inteligente de consumo para electrodomésticos.",
@@ -35,40 +69,6 @@
         "name": "GitHub",
         "url": "https://github.com/adrianpisabarrogarcia/consumo-red-electrica",
         "svg": "github"
-      }
-    ]
-  },
-  {
-    "title": "conelpapa.es",
-    "image": "/assets/images/conelpapa.webp",
-    "description": "Web oficial del Viaje Apostólico a España de Su Santidad el Papa León XIV, con información sobre el itinerario, actos, inscripciones y recursos para los fieles. Colaboración en el desarrollo.",
-    "technologies": [
-      {
-        "name": "Astro",
-        "url": "https://astro.build/",
-        "svg": "astro"
-      },
-      {
-        "name": "GCP",
-        "url": "https://cloud.google.com/",
-        "svg": "gcp"
-      },
-      {
-        "name": "Firebase",
-        "url": "https://firebase.google.com/",
-        "svg": "firebase"
-      },
-      {
-        "name": "Directus",
-        "url": "https://directus.io/",
-        "svg": "directus"
-      }
-    ],
-    "links": [
-      {
-        "name": "Ver proyecto",
-        "url": "https://conelpapa.es/",
-        "svg": "external-link"
       }
     ]
   },
