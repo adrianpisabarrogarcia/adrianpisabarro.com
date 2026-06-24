@@ -21,6 +21,8 @@ import StrapiIcon from "./icons/strapi.astro";
 import VpsIcon from "./icons/vps.astro";
 import GcpIcon from "./icons/gcp.astro";
 import DirectusIcon from "./icons/directus.astro";
+import ReactIcon from "./icons/react.astro";
+import TypescriptIcon from "./icons/typescript.astro";
 
 import projects from "../data/projects.json";
 ---
@@ -60,10 +62,10 @@ import projects from "../data/projects.json";
             <h3 class="text-2xl font-semibold text-custom-blue-dark dark:text-custom-yellow-chrome">
               {project.title}
             </h3>
-            <div class="mt-2 flex">
+            <div class="mt-2 flex flex-wrap">
               {project.technologies.map((tech) => (
                 <a
-                  class="bg-custom-blue-dark hover:bg-custom-blue border text-white rounded-full flex pt-1 pb-1 ps-2 pe-2 text-sm items-center justify-center me-2"
+                  class="bg-custom-blue-dark hover:bg-custom-blue border text-white rounded-full flex pt-1 pb-1 ps-2 pe-2 text-sm items-center justify-center me-2 mb-2 whitespace-nowrap"
                   href={tech.url}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -88,6 +90,8 @@ import projects from "../data/projects.json";
                     {tech.svg === "vps" && <VpsIcon />}
                     {tech.svg === "gcp" && <GcpIcon />}
                     {tech.svg === "directus" && <DirectusIcon />}
+                    {tech.svg === "react" && <ReactIcon />}
+                    {tech.svg === "typescript" && <TypescriptIcon />}
                   </span>
                   {tech.name}
                 </a>
