@@ -11,11 +11,9 @@ allBlogPosts.forEach((post: any) => {
 });
 
 function formatDate(date: string) {
-  return new Intl.DateTimeFormat("es-ES", {
-    year: "numeric",
-    month: "long",
-    day: "2-digit",
-  }).format(new Date(date));
+  const d = new Date(date);
+  const month = d.toLocaleString("es-ES", { month: "long" });
+  return `${month.charAt(0).toUpperCase() + month.slice(1)} ${d.getFullYear()}`;
 }
 ---
 
@@ -56,7 +54,7 @@ function formatDate(date: string) {
         <div class="w-9/10 ms-3">
           <h3 class="text-xl font-medium">{post.data.title}</h3>
           <p class="text-gray-600 dark:text-gray-300 text-sm">
-            {post.formattedDate} · {post.data.category}
+            <span class="font-bold">{post.formattedDate}</span> · {post.data.category}
           </p>
         </div>
       </a>

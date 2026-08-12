@@ -135,11 +135,8 @@ if (post) {
 }
 
 function formatDate(date: Date) {
-  return new Intl.DateTimeFormat("es-ES", {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  }).format(date);
+  const month = date.toLocaleString("es-ES", { month: "long" });
+  return `${month.charAt(0).toUpperCase() + month.slice(1)} ${date.getFullYear()}`;
 }
 ---
 
@@ -179,7 +176,7 @@ function formatDate(date: Date) {
                 <p>{post.data.author}</p>
                 <p class="text-gray-500 text-sm">
                   {post.data.duration} read ·
-                  {formatDate(new Date(post.data.date))}
+                  <span class="font-bold">{formatDate(new Date(post.data.date))}</span>
                 </p>
               </div>
             </div>
