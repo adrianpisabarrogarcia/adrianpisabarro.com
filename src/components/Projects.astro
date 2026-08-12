@@ -25,6 +25,13 @@ import ReactIcon from "./icons/react.astro";
 import TypescriptIcon from "./icons/typescript.astro";
 
 import projects from "../data/projects.json";
+
+interface Props {
+  limit?: number;
+}
+
+const { limit } = Astro.props;
+const displayedProjects = limit ? projects.slice(0, limit) : projects;
 ---
 
 <section class="sm:mt-20 mt-10">
@@ -49,9 +56,9 @@ import projects from "../data/projects.json";
   </h2>
   <div>
     {
-      projects.map((project) => (
+      displayedProjects.map((project) => (
         <article class="flex flex-col md:flex-row mt-4">
-          <div class=" shadow-lg dark:shadow-slate-300/15 md:w-1/2 overflow-hidden rounded-lg flex">
+          <div class="shadow-lg dark:shadow-slate-300/15 md:w-1/2 overflow-hidden rounded-lg flex bg-white">
             <img
               src={project.image}
               alt={`Proyecto ${project.title}`}
@@ -64,13 +71,8 @@ import projects from "../data/projects.json";
             </h3>
             <div class="mt-2 flex flex-wrap">
               {project.technologies.map((tech) => (
-                <a
-                  class="bg-custom-blue-dark hover:bg-custom-blue border text-white rounded-full flex pt-1 pb-1 ps-2 pe-2 text-sm items-center justify-center me-2 mb-2 whitespace-nowrap"
-                  href={tech.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span class="me-1">
+                <span class="inline-flex items-center gap-1 rounded-full border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700/50 px-2 py-0.5 text-xs font-medium text-gray-700 dark:text-gray-200 me-1.5 mb-1.5 whitespace-nowrap">
+                  <span class="flex text-custom-blue-dark dark:text-custom-yellow-chrome [&>svg]:w-3 [&>svg]:h-3">
                     {tech.svg === "astro" && <AstroIcon />}
                     {tech.svg === "tailwind" && <TailwindIcon />}
                     {tech.svg === "angular" && <AngularIcon />}
@@ -94,7 +96,7 @@ import projects from "../data/projects.json";
                     {tech.svg === "typescript" && <TypescriptIcon />}
                   </span>
                   {tech.name}
-                </a>
+                </span>
               ))}
             </div>
             <p class="mt-2">{project.description}</p>
@@ -123,15 +125,27 @@ import projects from "../data/projects.json";
       ))
     }
   </div>
-  <div class="mt-2">
-    <a
-      href="https://github.com/adrianpisabarrogarcia?tab=repositories"
-      class="text-custom-blue-dark dark:text-custom-yellow-chrome hover:underline"
-      aria-label="Ver más proyectos"
-      rel="noopener noreferrer"
-      target="_blank"
-    >
-      Más proyectos en GitHub
-    </a>
+  <div class="mt-4">
+    {limit && projects.length > limit && (
+      <a
+        href="/proyectos"
+        class="inline-flex items-center gap-1 rounded-full bg-gray-100 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-600 text-custom-blue-dark dark:text-custom-yellow-chrome px-4 py-2 text-sm font-medium hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-300"
+        aria-label="Ver todos los proyectos"
+      >
+        Ver todos los proyectos ({projects.length}) →
+      </a>
+    )}
+    {!limit && (
+      <a
+        href="https://github.com/adrianpisabarrogarcia?tab=repositories"
+        class="inline-flex items-center gap-2 bg-custom-blue-dark hover:bg-custom-blue border text-white ps-4 pe-4 pt-2 pb-2 rounded-full shadow-sm hover:shadow-md transition-all duration-300"
+        aria-label="Ver más proyectos en GitHub"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <GithubIcon />
+        Más proyectos en GitHub
+      </a>
+    )}
   </div>
 </section>

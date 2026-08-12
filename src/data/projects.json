@@ -6,22 +6,18 @@
     "technologies": [
       {
         "name": "Astro",
-        "url": "https://astro.build/",
         "svg": "astro"
       },
       {
         "name": "GCP",
-        "url": "https://cloud.google.com/",
         "svg": "gcp"
       },
       {
         "name": "Firebase",
-        "url": "https://firebase.google.com/",
         "svg": "firebase"
       },
       {
         "name": "Directus",
-        "url": "https://directus.io/",
         "svg": "directus"
       }
     ],
@@ -40,22 +36,18 @@
     "technologies": [
       {
         "name": "React",
-        "url": "https://react.dev/",
         "svg": "react"
       },
       {
         "name": "TypeScript",
-        "url": "https://www.typescriptlang.org/",
         "svg": "typescript"
       },
       {
         "name": "Tailwind CSS",
-        "url": "https://tailwindcss.com/",
         "svg": "tailwind"
       },
       {
         "name": "PrimeReact",
-        "url": "https://primereact.org/",
         "svg": "box"
       }
     ],
@@ -79,22 +71,18 @@
     "technologies": [
       {
         "name": "Astro",
-        "url": "https://astro.build/",
         "svg": "astro"
       },
       {
         "name": "Strapi",
-        "url": "https://strapi.io/",
         "svg": "strapi"
       },
       {
         "name": "VPS",
-        "url": "https://en.wikipedia.org/wiki/Virtual_private_server",
         "svg": "vps"
       },
       {
         "name": "Vercel",
-        "url": "https://vercel.com/",
         "svg": "vercel"
       }
     ],
@@ -118,22 +106,18 @@
     "technologies": [
       {
         "name": "Astro",
-        "url": "https://astro.build/",
         "svg": "astro"
       },
       {
         "name": "Turso",
-        "url": "https://turso.tech/",
         "svg": "turso"
       },
       {
         "name": "Stripe",
-        "url": "https://stripe.com/",
         "svg": "stripe"
       },
       {
         "name": "Vercel",
-        "url": "https://vercel.com/",
         "svg": "vercel"
       }
     ],
@@ -157,12 +141,10 @@
     "technologies": [
       {
         "name": "Astro",
-        "url": "https://astro.build/",
         "svg": "astro"
       },
       {
         "name": "Tailwind CSS",
-        "url": "https://tailwindcss.com/",
         "svg": "tailwind"
       }
     ],
@@ -186,12 +168,10 @@
     "technologies": [
       {
         "name": "Astro",
-        "url": "https://astro.build/",
         "svg": "astro"
       },
       {
         "name": "Tailwind CSS",
-        "url": "https://tailwindcss.com/",
         "svg": "tailwind"
       }
     ],
@@ -215,17 +195,14 @@
     "technologies": [
       {
         "name": "Angular",
-        "url": "https://angular.dev/",
         "svg": "angular"
       },
       {
         "name": "Tailwind CSS",
-        "url": "https://tailwindcss.com/",
         "svg": "tailwind"
       },
       {
         "name": "PrimeNG",
-        "url": "https://primeng.org/",
         "svg": "box"
       }
     ],
@@ -249,17 +226,14 @@
     "technologies": [
       {
         "name": "PHP",
-        "url": "https://www.php.net/",
         "svg": "php"
       },
       {
         "name": "Chart.js",
-        "url": "https://www.chartjs.org/",
         "svg": "chart"
       },
       {
         "name": "MySQL",
-        "url": "https://www.mysql.com/",
         "svg": "mysql"
       }
     ],
@@ -283,12 +257,10 @@
     "technologies": [
       {
         "name": "Kotlin",
-        "url": "https://kotlinlang.org/",
         "svg": "kotlin"
       },
       {
         "name": "Firebase",
-        "url": "https://firebase.google.com/",
         "svg": "firebase"
       }
     ],
@@ -312,22 +284,18 @@
     "technologies": [
       {
         "name": "Laravel",
-        "url": "https://laravel.com/",
         "svg": "laravel"
       },
       {
         "name": "JQuery",
-        "url": "https://jquery.com/",
         "svg": "jquery"
       },
       {
         "name": "Bootstrap",
-        "url": "https://getbootstrap.com/",
         "svg": "bootstrap"
       },
       {
         "name": "MySQL",
-        "url": "https://www.mysql.com/",
         "svg": "mysql"
       }
     ],
