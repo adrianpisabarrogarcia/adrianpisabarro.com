@@ -11,29 +11,27 @@
     );
     if (themeToggleSelector) {
       themeToggleSelector.addEventListener("click", () => {
-        const currentTheme = localStorage.getItem("theme");
-        const newTheme = currentTheme === "light" ? "dark" : "light";
-        setTheme(newTheme);
+        const isDark = document.documentElement.classList.contains("dark");
+        setTheme(isDark ? "light" : "dark");
       });
     }
 
-    const localStorageTheme = localStorage.getItem("theme");
-    if (localStorageTheme) {
-      setTheme(localStorageTheme);
-    } else {
-      //View system default theme
-      const currentTheme =
-        window.matchMedia &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches
-          ? "dark"
-          : "light";
-      setTheme(currentTheme);
-    }
+    // El tema ya se aplica antes del primer pintado (script inline en Layout.astro
+    // head) para evitar el flash de contenido sin estilo. Aquí solo sincronizamos
+    // el icono con la clase "dark" ya presente en <html>.
+    const initialTheme = document.documentElement.classList.contains("dark")
+      ? "dark"
+      : "light";
+    setIcon(initialTheme);
 
     function setTheme(newTheme: string) {
       document.documentElement.classList.toggle("dark", newTheme === "dark");
       localStorage.setItem("theme", newTheme);
-      const lightIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" 
+      setIcon(newTheme);
+    }
+
+    function setIcon(newTheme: string) {
+      const lightIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
       fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" 
       class="icon icon-tabler icons-tabler-outline icon-tabler-sun transition-all duration-300 transform hover:scale-150">
   <path stroke="none" d="M0 0h24v24H0z" fill="none" />

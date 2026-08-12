@@ -11,6 +11,19 @@ const { title } = Astro.props;
 <!doctype html>
 <html lang="es">
   <head>
+    <script is:inline>
+      (function () {
+        try {
+          var theme = localStorage.getItem("theme");
+          var prefersDark =
+            window.matchMedia &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches;
+          if (theme === "dark" || (!theme && prefersDark)) {
+            document.documentElement.classList.add("dark");
+          }
+        } catch (e) {}
+      })();
+    </script>
     <meta charset="UTF-8" />
     <meta name="description" content="Explora mi universo del desarrollo: un blog y porfolio donde innovación, tecnología y pasión se fusionan en cada proyecto." />
     <meta name="viewport" content="width=device-width" />
