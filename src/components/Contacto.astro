@@ -1,0 +1,144 @@
+---
+const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? "";
+---
+
+<section id="contacto" class="sm:mt-20 mt-10 scroll-mt-20">
+  <h2 class="flex items-center text-3xl font-semibold">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="40"
+      height="40"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="icon icon-tabler icons-tabler-outline icon-tabler-mail pr-1"
+      ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+        d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z"
+      ></path><path d="M3 7l9 6l9 -6"></path></svg
+    >
+    Cuéntame tu proyecto
+  </h2>
+  <p class="mt-3 leading-relaxed">
+    Cuéntame en pocas líneas de qué se trata y te respondo en cuanto pueda,
+    normalmente en 1-2 días.
+  </p>
+
+  <form
+    id="contact-form"
+    data-access-key={accessKey}
+    class="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50/60 dark:bg-gray-700/20 p-4 sm:p-6"
+  >
+    <input type="checkbox" name="botcheck" class="hidden" style="display: none;" />
+
+    <div class="flex flex-col">
+      <label for="name" class="text-sm font-medium mb-1">Nombre</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        required
+        class="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-custom-blue transition-colors duration-300"
+      />
+    </div>
+
+    <div class="flex flex-col">
+      <label for="email" class="text-sm font-medium mb-1">Email</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        required
+        class="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-custom-blue transition-colors duration-300"
+      />
+    </div>
+
+    <div class="flex flex-col sm:col-span-2">
+      <label for="project_type" class="text-sm font-medium mb-1">Tipo de proyecto</label>
+      <select
+        id="project_type"
+        name="project_type"
+        class="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-custom-blue transition-colors duration-300"
+      >
+        <option value="Desarrollo web a medida">Desarrollo web a medida</option>
+        <option value="Consultoría de arquitectura">Consultoría de arquitectura</option>
+        <option value="Auditoría técnica / DevOps">Auditoría técnica / DevOps</option>
+        <option value="Integración de IA">Integración de IA</option>
+        <option value="Otro">Otro</option>
+      </select>
+    </div>
+
+    <div class="flex flex-col sm:col-span-2">
+      <label for="message" class="text-sm font-medium mb-1">Mensaje</label>
+      <textarea
+        id="message"
+        name="message"
+        rows="4"
+        required
+        class="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-custom-blue transition-colors duration-300"
+      ></textarea>
+    </div>
+
+    <div class="sm:col-span-2 flex items-center gap-3">
+      <button
+        type="submit"
+        class="inline-flex items-center gap-2 bg-gradient-to-r from-custom-blue to-custom-blue-dark text-white ps-4 pe-4 pt-2 pb-2 rounded-full shadow-md shadow-custom-blue/20 hover:shadow-lg hover:shadow-custom-blue/30 hover:-translate-y-0.5 transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed disabled:translate-y-0 font-medium"
+      >
+        Enviar mensaje
+      </button>
+      <p id="contact-form-status" class="text-sm" role="status" aria-live="polite"></p>
+    </div>
+  </form>
+</section>
+
+<script>
+  const form = document.getElementById("contact-form") as HTMLFormElement | null;
+  const status = document.getElementById("contact-form-status");
+
+  form?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    if (!form || !status) return;
+
+    const accessKey = form.dataset.accessKey;
+    const submitButton = form.querySelector<HTMLButtonElement>("button[type=submit]");
+
+    if (!accessKey) {
+      status.textContent = "El formulario no está configurado todavía. Escríbeme directamente por email o LinkedIn.";
+      status.className = "text-sm text-red-600 dark:text-red-400";
+      return;
+    }
+
+    const formData = new FormData(form);
+    formData.append("access_key", accessKey);
+    formData.append("subject", "Nuevo mensaje desde adrianpisabarro.com");
+
+    if (submitButton) submitButton.disabled = true;
+    status.textContent = "Enviando...";
+    status.className = "text-sm text-gray-500 dark:text-gray-400";
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: formData,
+      });
+      const result = await response.json();
+
+      if (result.success) {
+        status.textContent = "¡Gracias! Te responderé en cuanto pueda.";
+        status.className = "text-sm text-green-600 dark:text-green-400";
+        form.reset();
+      } else {
+        status.textContent = "No se ha podido enviar. Prueba de nuevo o escríbeme por email.";
+        status.className = "text-sm text-red-600 dark:text-red-400";
+      }
+    } catch {
+      status.textContent = "No se ha podido enviar. Prueba de nuevo o escríbeme por email.";
+      status.className = "text-sm text-red-600 dark:text-red-400";
+    } finally {
+      if (submitButton) submitButton.disabled = false;
+    }
+  });
+</script>

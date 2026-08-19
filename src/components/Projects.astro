@@ -34,7 +34,7 @@ const { limit } = Astro.props;
 const displayedProjects = limit ? projects.slice(0, limit) : projects;
 ---
 
-<section class="sm:mt-20 mt-10">
+<section id="proyectos" class="sm:mt-20 mt-10 scroll-mt-20">
   <h2 class="flex items-center text-3xl font-semibold">
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -57,15 +57,15 @@ const displayedProjects = limit ? projects.slice(0, limit) : projects;
   <div>
     {
       displayedProjects.map((project) => (
-        <article class="flex flex-col md:flex-row mt-4">
-          <div class="shadow-lg dark:shadow-slate-300/15 md:w-1/2 overflow-hidden rounded-lg flex bg-white">
+        <article class="flex flex-col md:flex-row mt-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50/60 dark:bg-gray-700/20 hover:border-custom-blue/40 dark:hover:border-custom-blue/40 transition-all duration-300 overflow-hidden p-3 gap-4">
+          <div class="md:w-1/2 overflow-hidden rounded-lg flex bg-white">
             <img
               src={project.image}
               alt={`Proyecto ${project.title}`}
               class="w-full transition duration-700 ease-in-out hover:scale-105"
             />
           </div>
-          <div class="w-auto md:w-1/2 m-4">
+          <div class="w-auto md:w-1/2">
             <h3 class="text-2xl font-semibold text-custom-blue-dark dark:text-custom-yellow-chrome">
               {project.title}
             </h3>
