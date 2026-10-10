@@ -84,7 +84,7 @@ function formatDate(date: string | Date) {
         <div class="flex flex-wrap gap-2" id="category-filter-buttons">
           <button
             data-category="all"
-            class="category-btn px-3 py-1.5 rounded-full text-xs font-medium bg-custom-blue-dark text-white dark:bg-custom-yellow-chrome dark:text-gray-900 transition-colors cursor-pointer"
+            class="category-btn px-3 py-1.5 rounded-full text-xs font-mono font-medium bg-custom-blue-dark text-white dark:bg-custom-yellow-chrome dark:text-gray-900 transition-colors cursor-pointer"
           >
             Todas ({allBlogPosts.length})
           </button>
@@ -95,7 +95,7 @@ function formatDate(date: string | Date) {
             return (
               <button
                 data-category={cat}
-                class="category-btn px-3 py-1.5 rounded-full text-xs font-medium bg-gray-200 dark:bg-gray-700/60 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors cursor-pointer"
+                class="category-btn px-3 py-1.5 rounded-full text-xs font-mono font-medium bg-gray-200 dark:bg-gray-700/60 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors cursor-pointer"
               >
                 {cat} ({count})
               </button>
@@ -110,7 +110,7 @@ function formatDate(date: string | Date) {
     {
       displayedPosts.map((post: any) => (
         <a
-          class="article-card p-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700/30 hover:border-custom-blue/40 dark:hover:border-custom-blue/40 hover:bg-white dark:hover:bg-gray-700/50 flex items-center gap-3 mt-3 transition-all duration-300"
+          class="article-card p-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700/30 card-hover-effect hover:border-custom-blue/50 dark:hover:border-custom-yellow-chrome/50 hover:bg-white dark:hover:bg-gray-700/50 flex items-center gap-3 mt-3"
           href={`/blog/${post.slug}`}
           aria-label={post.data.title}
           data-category={post.data.category}
@@ -126,7 +126,7 @@ function formatDate(date: string | Date) {
           </div>
           <div class="w-9/10">
             <h3 class="text-xl font-medium">{post.data.title}</h3>
-            <p class="text-gray-600 dark:text-gray-300 text-sm">
+            <p class="text-gray-600 dark:text-gray-300 text-sm font-mono">
               <span class="font-bold">{post.formattedDate}</span> ·{" "}
               <span class="text-custom-blue-dark dark:text-custom-yellow-chrome font-medium">
                 {post.data.category}

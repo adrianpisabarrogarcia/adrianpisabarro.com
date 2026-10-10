@@ -2,6 +2,9 @@
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import BackToTop from "../components/BackToTop.astro";
+import "@fontsource/geist-sans";
+import "@fontsource/geist-mono";
+import "@fontsource/geist-pixel";
 interface Props {
   title: string;
 }
@@ -111,6 +114,16 @@ const personSchema = {
   </body>
 
   <style is:global>
+    html {
+      font-family: "Geist Sans", "Geist", ui-sans-serif, system-ui, sans-serif;
+    }
+    code, pre, kbd, samp {
+      font-family: "Geist Mono", ui-monospace, monospace;
+    }
+    .font-pixel {
+      font-family: "Geist Pixel", "Geist Mono", monospace;
+    }
+
     @media (prefers-reduced-motion: no-preference) {
       html {
         scroll-behavior: smooth;
@@ -151,5 +164,47 @@ const personSchema = {
       0%, 100% { transform: translate(0, 0) scale(1); }
       50% { transform: translate(30px, -40px) scale(1.1); }
     }
+
+    .animate-gradient-text {
+      background-size: 200% auto;
+      animation: textGradient 4s linear infinite;
+    }
+
+    @keyframes textGradient {
+      0% { background-position: 0% center; }
+      50% { background-position: 100% center; }
+      100% { background-position: 0% center; }
+    }
+
+    .card-hover-effect {
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+    }
+    .card-hover-effect:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px -8px rgba(23, 154, 252, 0.18);
+    }
+    :global(.dark) .card-hover-effect:hover {
+      box-shadow: 0 12px 28px -8px rgba(255, 235, 59, 0.12);
+    }
+
+    @keyframes heroFadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(24px) scale(0.97);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .animate-hero-in {
+      animation: heroFadeInUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    .animate-hero-delay-1 { animation-delay: 0.12s; }
+    .animate-hero-delay-2 { animation-delay: 0.24s; }
+    .animate-hero-delay-3 { animation-delay: 0.36s; }
+    .animate-hero-delay-4 { animation-delay: 0.48s; }
+    .animate-hero-delay-5 { animation-delay: 0.60s; }
   </style>
 </html>

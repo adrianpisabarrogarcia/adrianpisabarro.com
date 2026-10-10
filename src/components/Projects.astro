@@ -57,7 +57,7 @@ const displayedProjects = limit ? projects.slice(0, limit) : projects;
   <div>
     {
       displayedProjects.map((project) => (
-        <article class="flex flex-col md:flex-row mt-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50/60 dark:bg-gray-700/20 hover:border-custom-blue/40 dark:hover:border-custom-blue/40 transition-all duration-300 overflow-hidden p-3 gap-4">
+        <article class="flex flex-col md:flex-row mt-4 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50/60 dark:bg-gray-700/20 card-hover-effect hover:border-custom-blue/50 dark:hover:border-custom-yellow-chrome/50 overflow-hidden p-3 gap-4">
           <div class="md:w-1/2 overflow-hidden rounded-lg flex bg-white">
             <img
               src={project.image}
@@ -71,7 +71,7 @@ const displayedProjects = limit ? projects.slice(0, limit) : projects;
             </h3>
             <div class="mt-2 flex flex-wrap">
               {project.technologies.map((tech) => (
-                <span class="inline-flex items-center gap-1 rounded-full border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700/50 px-2 py-0.5 text-xs font-medium text-gray-700 dark:text-gray-200 me-1.5 mb-1.5 whitespace-nowrap">
+                <span class="inline-flex items-center gap-1 rounded-full border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700/50 px-2 py-0.5 text-xs font-mono font-medium text-gray-700 dark:text-gray-200 me-1.5 mb-1.5 whitespace-nowrap">
                   <span class="flex text-custom-blue-dark dark:text-custom-yellow-chrome [&>svg]:w-3 [&>svg]:h-3">
                     {tech.svg === "astro" && <AstroIcon />}
                     {tech.svg === "tailwind" && <TailwindIcon />}

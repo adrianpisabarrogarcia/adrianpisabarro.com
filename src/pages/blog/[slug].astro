@@ -100,7 +100,7 @@ if (post) {
       color: #1a202c;
       border-radius: 0.25rem;
       font-size: 0.875em;
-      font-family: ui-monospace, monospace;
+      font-family: "Geist Mono", ui-monospace, monospace;
     }
     :global(.dark) .article code:not(pre code) {
       background-color: #374151;
@@ -114,7 +114,7 @@ if (post) {
     }
     .article pre code {
       font-size: 0.875rem;
-      font-family: ui-monospace, monospace;
+      font-family: "Geist Mono", ui-monospace, monospace;
     }
     .article ol {
         counter-reset: lista;
@@ -185,7 +185,7 @@ function formatDate(date: Date) {
               />
               <div class="flex flex-col">
                 <p>{post.data.author}</p>
-                <p class="text-gray-500 text-sm">
+                <p class="text-gray-500 text-sm font-mono">
                   {post.data.duration} read ·
                   <span class="font-bold">{formatDate(new Date(post.data.date))}</span>
                 </p>

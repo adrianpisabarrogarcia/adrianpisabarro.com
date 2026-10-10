@@ -7,6 +7,11 @@ export default {
 				'custom-blue': '#179afc',
 				'custom-blue-dark': '#1C5681',
 				'custom-yellow-chrome': '#ffeb3b',
+			},
+			fontFamily: {
+				sans: ['"Geist Sans"', 'Geist', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+				mono: ['"Geist Mono"', 'ui-monospace', 'monospace'],
+				pixel: ['"Geist Pixel"', '"Geist Mono"', 'monospace'],
 			}
 		},
 	},
