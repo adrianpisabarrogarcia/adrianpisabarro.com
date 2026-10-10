@@ -1,16 +1,29 @@
 ---
 import { getCollection } from "astro:content";
 
+interface Props {
+  limit?: number;
+  showFilter?: boolean;
+}
+
+const { limit, showFilter = false } = Astro.props;
+
 const allBlogPosts = await getCollection("blog");
 allBlogPosts.sort(
-  // Ordenar las entradas por fecha de publicación de forma descendente
   (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
 );
 allBlogPosts.forEach((post: any) => {
   post.formattedDate = formatDate(post.data.date);
 });
 
-function formatDate(date: string) {
+const displayedPosts = limit ? allBlogPosts.slice(0, limit) : allBlogPosts;
+
+// Extraer categorías únicas
+const categories = Array.from(
+  new Set(allBlogPosts.map((post) => post.data.category))
+).filter(Boolean);
+
+function formatDate(date: string | Date) {
   const d = new Date(date);
   const month = d.toLocaleString("es-ES", { month: "long" });
   return `${month.charAt(0).toUpperCase() + month.slice(1)} ${d.getFullYear()}`;
@@ -35,29 +48,134 @@ function formatDate(date: string) {
       <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4"></path>
       <path d="M13.5 6.5l4 4"></path>
     </svg>
-    Últimos artículos
+    {limit ? "Últimos artículos" : "Artículos y Publicaciones"}
   </h2>
+
   {
-    allBlogPosts.map((post: any) => (
-      <a
-        class="p-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700/30 hover:border-custom-blue/40 dark:hover:border-custom-blue/40 hover:bg-white dark:hover:bg-gray-700/50 flex items-center gap-3 mt-3 transition-all duration-300"
-        href={`/blog/${post.slug}`}
-        aria-label={post.data.title}
-      >
-        <div class="w-1/10">
-          <img
-            src={post.data.image.src}
-            alt={post.data.image.alt}
-            class="w-16 h-16 object-cover rounded-lg"
-          />
-        </div>
-        <div class="w-9/10">
-          <h3 class="text-xl font-medium">{post.data.title}</h3>
-          <p class="text-gray-600 dark:text-gray-300 text-sm">
-            <span class="font-bold">{post.formattedDate}</span> · {post.data.category}
-          </p>
-        </div>
-      </a>
-    ))
+    showFilter && (
+      <div class="flex flex-wrap gap-2 mt-4 mb-2" id="category-filter-buttons">
+        <button
+          data-category="all"
+          class="category-btn px-3 py-1.5 rounded-full text-xs font-medium bg-custom-blue-dark text-white dark:bg-custom-yellow-chrome dark:text-gray-900 transition-colors cursor-pointer"
+        >
+          Todas ({allBlogPosts.length})
+        </button>
+        {categories.map((cat) => {
+          const count = allBlogPosts.filter(
+            (p) => p.data.category === cat
+          ).length;
+          return (
+            <button
+              data-category={cat}
+              class="category-btn px-3 py-1.5 rounded-full text-xs font-medium bg-gray-200 dark:bg-gray-700/60 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors cursor-pointer"
+            >
+              {cat} ({count})
+            </button>
+          );
+        })}
+      </div>
+    )
+  }
+
+  <div id="articles-list">
+    {
+      displayedPosts.map((post: any) => (
+        <a
+          class="article-card p-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-700/30 hover:border-custom-blue/40 dark:hover:border-custom-blue/40 hover:bg-white dark:hover:bg-gray-700/50 flex items-center gap-3 mt-3 transition-all duration-300"
+          href={`/blog/${post.slug}`}
+          aria-label={post.data.title}
+          data-category={post.data.category}
+        >
+          <div class="w-1/10 min-w-16">
+            <img
+              src={post.data.image.src}
+              alt={post.data.image.alt}
+              class="w-16 h-16 object-cover rounded-lg"
+            />
+          </div>
+          <div class="w-9/10">
+            <h3 class="text-xl font-medium">{post.data.title}</h3>
+            <p class="text-gray-600 dark:text-gray-300 text-sm">
+              <span class="font-bold">{post.formattedDate}</span> ·{" "}
+              <span class="text-custom-blue-dark dark:text-custom-yellow-chrome font-medium">
+                {post.data.category}
+              </span>
+            </p>
+          </div>
+        </a>
+      ))
+    }
+  </div>
+
+  {
+    limit && allBlogPosts.length > limit && (
+      <div class="mt-4">
+        <a
+          href="/articulos"
+          class="inline-flex items-center gap-1 rounded-full bg-gray-100 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-600 text-custom-blue-dark dark:text-custom-yellow-chrome px-4 py-2 text-sm font-medium hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-300"
+          aria-label="Ver todos los artículos"
+        >
+          Ver todos los artículos ({allBlogPosts.length}) →
+        </a>
+      </div>
+    )
   }
 </section>
+
+{
+  showFilter && (
+    <script is:inline>
+      document.addEventListener("DOMContentLoaded", () => {
+        const buttons = document.querySelectorAll(
+          "#category-filter-buttons .category-btn"
+        );
+        const articles = document.querySelectorAll(
+          "#articles-list .article-card"
+        );
+
+        buttons.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const cat = btn.getAttribute("data-category");
+
+            buttons.forEach((b) => {
+              b.classList.remove(
+                "bg-custom-blue-dark",
+                "text-white",
+                "dark:bg-custom-yellow-chrome",
+                "dark:text-gray-900"
+              );
+              b.classList.add(
+                "bg-gray-200",
+                "dark:bg-gray-700/60",
+                "text-gray-700",
+                "dark:text-gray-300"
+              );
+            });
+
+            btn.classList.remove(
+              "bg-gray-200",
+              "dark:bg-gray-700/60",
+              "text-gray-700",
+              "dark:text-gray-300"
+            );
+            btn.classList.add(
+              "bg-custom-blue-dark",
+              "text-white",
+              "dark:bg-custom-yellow-chrome",
+              "dark:text-gray-900"
+            );
+
+            articles.forEach((art) => {
+              const articleCat = art.getAttribute("data-category");
+              if (cat === "all" || articleCat === cat) {
+                art.style.display = "flex";
+              } else {
+                art.style.display = "none";
+              }
+            });
+          });
+        });
+      });
+    </script>
+  )
+}

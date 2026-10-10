@@ -1,0 +1,17 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Articles from "../../components/Articles.astro";
+---
+
+<Layout title="Artículos - Porfolio de Adrián Pisabarro">
+  <main class="w-full max-w-4xl mx-auto px-4 py-6">
+    <div style="margin-top: 40px;">
+      <a
+        href="/"
+        class="bg-custom-blue-dark hover:bg-custom-blue border text-white ps-3 pe-3 pt-2 pb-2 rounded-full"
+        >← Ir atrás</a
+      >
+    </div>
+    <Articles showFilter={true} />
+  </main>
+</Layout>
