@@ -24,9 +24,9 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? "";
   <p class="mt-3 leading-relaxed">
     Cuéntame en pocas líneas de qué se trata y te respondo en cuanto pueda,
     normalmente en 1-2 días. También puedes escribirme directamente a <a
-      href="mailto:adrian.pisabarro.garcia@gmail.com"
+      href="mailto:hi@adrianpisabarro.com"
       class="text-custom-blue font-mono font-medium hover:underline"
-      >adrian.pisabarro.garcia@gmail.com</a
+      >hi@adrianpisabarro.com</a
     >.
   </p>
 
@@ -109,7 +109,7 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? "";
     const submitButton = form.querySelector<HTMLButtonElement>("button[type=submit]");
 
     if (!accessKey) {
-      status.innerHTML = 'El formulario no está configurado. Escríbeme a <a href="mailto:adrian.pisabarro.garcia@gmail.com" class="underline font-mono">adrian.pisabarro.garcia@gmail.com</a>';
+      status.innerHTML = 'El formulario no está configurado. Escríbeme a <a href="mailto:hi@adrianpisabarro.com" class="underline font-mono">hi@adrianpisabarro.com</a>';
       status.className = "text-sm text-red-600 dark:text-red-400";
       return;
     }
@@ -140,13 +140,13 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? "";
         status.className = "text-sm text-green-600 dark:text-green-400";
         form.reset();
       } else {
-        const email = encodeURIComponent("adrian.pisabarro.garcia@gmail.com");
+        const email = encodeURIComponent("hi@adrianpisabarro.com");
         const body = encodeURIComponent(`Hola Adrián,\n\n${payload.message || ''}`);
         status.innerHTML = `No se ha podido enviar automáticamente. <a href="mailto:${email}?subject=Contacto%20porfolio&body=${body}" class="underline font-mono font-medium">Haz clic aquí para enviármelo directamente por email →</a>`;
         status.className = "text-sm text-red-600 dark:text-red-400";
       }
     } catch {
-      const email = encodeURIComponent("adrian.pisabarro.garcia@gmail.com");
+      const email = encodeURIComponent("hi@adrianpisabarro.com");
       const body = encodeURIComponent(`Hola Adrián,\n\n${payload.message || ''}`);
       status.innerHTML = `No se ha podido enviar automáticamente. <a href="mailto:${email}?subject=Contacto%20porfolio&body=${body}" class="underline font-mono font-medium">Haz clic aquí para enviármelo directamente por email →</a>`;
       status.className = "text-sm text-red-600 dark:text-red-400";
