@@ -1,5 +1,5 @@
 ---
-const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? "";
+const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY || "3a7f85d5-be85-4da5-ae1a-e7b6e86084eb";
 ---
 
 <section id="contacto" class="sm:mt-20 mt-10 scroll-mt-20">
@@ -118,8 +118,6 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? "";
     formData.append("access_key", accessKey);
     formData.append("subject", "Nuevo mensaje desde adrianpisabarro.com");
 
-    const payload = Object.fromEntries(formData);
-
     if (submitButton) submitButton.disabled = true;
     status.textContent = "Enviando...";
     status.className = "text-sm text-gray-500 dark:text-gray-400";
@@ -127,11 +125,7 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? "";
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(payload),
+        body: formData,
       });
       const result = await response.json();
 
@@ -140,15 +134,17 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY ?? "";
         status.className = "text-sm text-green-600 dark:text-green-400";
         form.reset();
       } else {
+        const msgVal = form.querySelector<HTMLTextAreaElement>("textarea[name=message]")?.value || "";
         const email = encodeURIComponent("hi@adrianpisabarro.com");
-        const body = encodeURIComponent(`Hola Adrián,\n\n${payload.message || ''}`);
-        status.innerHTML = `No se ha podido enviar automáticamente. <a href="mailto:${email}?subject=Contacto%20porfolio&body=${body}" class="underline font-mono font-medium">Haz clic aquí para enviármelo directamente por email →</a>`;
+        const body = encodeURIComponent(`Hola Adrián,\n\n${msgVal}`);
+        status.innerHTML = `No se ha podido enviar automáticamente. <a href="mailto:${email}?subject=Contacto%20porfolio&body=${body}" class="underline font-mono font-medium">Haz clic aquí para enviármelo por email →</a>`;
         status.className = "text-sm text-red-600 dark:text-red-400";
       }
     } catch {
+      const msgVal = form.querySelector<HTMLTextAreaElement>("textarea[name=message]")?.value || "";
       const email = encodeURIComponent("hi@adrianpisabarro.com");
-      const body = encodeURIComponent(`Hola Adrián,\n\n${payload.message || ''}`);
-      status.innerHTML = `No se ha podido enviar automáticamente. <a href="mailto:${email}?subject=Contacto%20porfolio&body=${body}" class="underline font-mono font-medium">Haz clic aquí para enviármelo directamente por email →</a>`;
+      const body = encodeURIComponent(`Hola Adrián,\n\n${msgVal}`);
+      status.innerHTML = `No se ha podido enviar automáticamente. <a href="mailto:${email}?subject=Contacto%20porfolio&body=${body}" class="underline font-mono font-medium">Haz clic aquí para enviármelo por email →</a>`;
       status.className = "text-sm text-red-600 dark:text-red-400";
     } finally {
       if (submitButton) submitButton.disabled = false;
