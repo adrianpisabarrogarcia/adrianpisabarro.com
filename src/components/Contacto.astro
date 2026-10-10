@@ -1,5 +1,6 @@
 ---
-const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY || "3a7f85d5-be85-4da5-ae1a-e7b6e86084eb";
+const rawKey = import.meta.env.PUBLIC_WEB3FORMS_KEY || "3a7f85d5-be85-4da5-ae1a-e7b6e86084eb";
+const accessKey = rawKey.trim();
 ---
 
 <section id="contacto" class="sm:mt-20 mt-10 scroll-mt-20">
@@ -105,7 +106,7 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY || "3a7f85d5-be85-4da5-ae
     event.preventDefault();
     if (!form || !status) return;
 
-    const accessKey = form.dataset.accessKey;
+    const accessKey = (form.dataset.accessKey || "").trim();
     const submitButton = form.querySelector<HTMLButtonElement>("button[type=submit]");
 
     if (!accessKey) {
@@ -115,7 +116,7 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY || "3a7f85d5-be85-4da5-ae
     }
 
     const formData = new FormData(form);
-    formData.append("access_key", accessKey);
+    formData.set("access_key", accessKey);
     formData.append("subject", "Nuevo mensaje desde adrianpisabarro.com");
 
     if (submitButton) submitButton.disabled = true;
