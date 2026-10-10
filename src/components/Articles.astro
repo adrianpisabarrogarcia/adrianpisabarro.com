@@ -53,26 +53,55 @@ function formatDate(date: string | Date) {
 
   {
     showFilter && (
-      <div class="flex flex-wrap gap-2 mt-4 mb-2" id="category-filter-buttons">
-        <button
-          data-category="all"
-          class="category-btn px-3 py-1.5 rounded-full text-xs font-medium bg-custom-blue-dark text-white dark:bg-custom-yellow-chrome dark:text-gray-900 transition-colors cursor-pointer"
-        >
-          Todas ({allBlogPosts.length})
-        </button>
-        {categories.map((cat) => {
-          const count = allBlogPosts.filter(
-            (p) => p.data.category === cat
-          ).length;
-          return (
-            <button
-              data-category={cat}
-              class="category-btn px-3 py-1.5 rounded-full text-xs font-medium bg-gray-200 dark:bg-gray-700/60 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors cursor-pointer"
+      <div class="mt-4 mb-4 flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between">
+        <!-- Buscador -->
+        <div class="relative w-full sm:w-72">
+          <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gray-400">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-4 h-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
             >
-              {cat} ({count})
-            </button>
-          );
-        })}
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+          </div>
+          <input
+            type="text"
+            id="article-search-input"
+            placeholder="Buscar artículos..."
+            class="w-full pl-9 pr-4 py-2 text-sm rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-custom-blue transition-all"
+          />
+        </div>
+
+        <!-- Filtros por Categoría -->
+        <div class="flex flex-wrap gap-2" id="category-filter-buttons">
+          <button
+            data-category="all"
+            class="category-btn px-3 py-1.5 rounded-full text-xs font-medium bg-custom-blue-dark text-white dark:bg-custom-yellow-chrome dark:text-gray-900 transition-colors cursor-pointer"
+          >
+            Todas ({allBlogPosts.length})
+          </button>
+          {categories.map((cat) => {
+            const count = allBlogPosts.filter(
+              (p) => p.data.category === cat
+            ).length;
+            return (
+              <button
+                data-category={cat}
+                class="category-btn px-3 py-1.5 rounded-full text-xs font-medium bg-gray-200 dark:bg-gray-700/60 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors cursor-pointer"
+              >
+                {cat} ({count})
+              </button>
+            );
+          })}
+        </div>
       </div>
     )
   }
@@ -85,6 +114,8 @@ function formatDate(date: string | Date) {
           href={`/blog/${post.slug}`}
           aria-label={post.data.title}
           data-category={post.data.category}
+          data-title={post.data.title.toLowerCase()}
+          data-description={(post.data.description || "").toLowerCase()}
         >
           <div class="w-1/10 min-w-16">
             <img
@@ -107,8 +138,15 @@ function formatDate(date: string | Date) {
     }
   </div>
 
+  <div
+    id="no-articles-found"
+    class="hidden p-6 mt-4 text-center border border-dashed border-gray-300 dark:border-gray-700 rounded-xl text-gray-500 dark:text-gray-400"
+  >
+    No se encontraron artículos que coincidan con la búsqueda.
+  </div>
+
   {
-    limit && allBlogPosts.length > limit && (
+    limit && (
       <div class="mt-4">
         <a
           href="/articulos"
@@ -126,16 +164,60 @@ function formatDate(date: string | Date) {
   showFilter && (
     <script is:inline>
       document.addEventListener("DOMContentLoaded", () => {
+        const searchInput = document.getElementById("article-search-input");
         const buttons = document.querySelectorAll(
           "#category-filter-buttons .category-btn"
         );
         const articles = document.querySelectorAll(
           "#articles-list .article-card"
         );
+        const noResults = document.getElementById("no-articles-found");
+
+        let activeCategory = "all";
+        let searchQuery = "";
+
+        function filterArticles() {
+          let visibleCount = 0;
+
+          articles.forEach((art) => {
+            const articleCat = art.getAttribute("data-category");
+            const title = art.getAttribute("data-title") || "";
+            const description = art.getAttribute("data-description") || "";
+
+            const matchesCategory =
+              activeCategory === "all" || articleCat === activeCategory;
+            const matchesSearch =
+              !searchQuery ||
+              title.includes(searchQuery) ||
+              description.includes(searchQuery);
+
+            if (matchesCategory && matchesSearch) {
+              art.style.display = "flex";
+              visibleCount++;
+            } else {
+              art.style.display = "none";
+            }
+          });
+
+          if (noResults) {
+            if (visibleCount === 0) {
+              noResults.classList.remove("hidden");
+            } else {
+              noResults.classList.add("hidden");
+            }
+          }
+        }
+
+        if (searchInput) {
+          searchInput.addEventListener("input", (e) => {
+            searchQuery = e.target.value.toLowerCase().trim();
+            filterArticles();
+          });
+        }
 
         buttons.forEach((btn) => {
           btn.addEventListener("click", () => {
-            const cat = btn.getAttribute("data-category");
+            activeCategory = btn.getAttribute("data-category");
 
             buttons.forEach((b) => {
               b.classList.remove(
@@ -165,14 +247,7 @@ function formatDate(date: string | Date) {
               "dark:text-gray-900"
             );
 
-            articles.forEach((art) => {
-              const articleCat = art.getAttribute("data-category");
-              if (cat === "all" || articleCat === cat) {
-                art.style.display = "flex";
-              } else {
-                art.style.display = "none";
-              }
-            });
+            filterArticles();
           });
         });
       });
